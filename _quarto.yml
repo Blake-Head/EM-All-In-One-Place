@@ -63,8 +63,8 @@ bibliography: references.bib
 format:
   html:
     theme:
-# Darkmode Options: darkly, slate, solar, superhero, vapor
-      dark: superhero
+# Darkmode Options: darkly (most popular), slate, solar, superhero, vapor
+      dark: vapor
       light: cosmo
     css: assets/css/custom.scss
     grid:
