@@ -70,7 +70,6 @@ format:
   html:
     theme:
       dark: darkly
-      light: cosmo
       - assets/css/custom.scss
     mainfont: "Source Serif 4"
     monofont: "Fira Code"
