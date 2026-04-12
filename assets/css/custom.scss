@@ -142,6 +142,16 @@ table {
   }
 }
 
+// Parent headers (parts)
+.sidebar-item-section.level1 > .sidebar-item-text {
+  color: #f6a821;
+}
+
+// Child items (chapters)
+.sidebar-item-section.level2 > .sidebar-item-text {
+  color: #90caf9;
+}
+
 // ─── Under Construction Notice ───────────────────────────────────────────────
 
 blockquote p:first-child:has(em) {
