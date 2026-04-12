@@ -142,14 +142,33 @@ table {
   }
 }
 
-// Parent headers (parts)
-.sidebar-item-section.level1 > .sidebar-item-text {
-  color: #f6a821;
+// === SIDEBAR STYLING ===
+
+// Part headers (Phase 0, Phase 1, etc.)
+.sidebar-item-section .sidebar-item-text {
+  color: #f6a821;                    // Gold/amber for parent headers
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.85em;
+  letter-spacing: 0.05em;
 }
 
-// Child items (chapters)
-.sidebar-item-section.level2 > .sidebar-item-text {
-  color: #90caf9;
+// Chapter links (individual pages within each phase)
+.sidebar-item-container .sidebar-item-text {
+  color: #90caf9;                    // Light blue for child items
+  font-weight: 400;
+}
+
+// Hover state for chapter links
+.sidebar-item-container .sidebar-item-text:hover {
+  color: #ffffff;
+}
+
+// Active page (the page you're currently on)
+.sidebar-item-container .sidebar-item-text.active,
+.sidebar-navigation .sidebar-item .active .sidebar-item-text {
+  color: #ffffff;
+  font-weight: 600;
 }
 
 // ─── Under Construction Notice ───────────────────────────────────────────────
