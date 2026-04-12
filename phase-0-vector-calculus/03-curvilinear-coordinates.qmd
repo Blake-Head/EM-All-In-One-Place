@@ -1,0 +1,130 @@
+---
+title: "Curvilinear Coordinates"
+subtitle: "Adapting the language of vector calculus to the symmetry of the problem"
+reading:
+  boas: "Ch. 10 (§1–5)"
+  griffiths: "§1.4"
+---
+
+## The Right Tool for the Job {#sec-curvilinear}
+
+Almost everything in Cartesian coordinates works beautifully — until you try to solve a problem with spherical or cylindrical symmetry. Trying to describe the potential of a point charge or a cylindrical capacitor in Cartesian coordinates is technically possible but practically miserable. Choosing coordinates that match the symmetry of your problem isn't just convenient — it often transforms an impossible-looking PDE into an ODE you can solve by hand.
+
+The price of this convenience is that we need to re-derive gradient, divergence, curl, and the Laplacian in these new coordinate systems. The machinery for doing this systematically is the theory of *curvilinear coordinates*, which is a small but essential piece of the toolkit.
+
+## Scale Factors and Basis Vectors
+
+In any orthogonal coordinate system $(u_1, u_2, u_3)$, a small displacement in the $u_i$ direction has length $h_i\, du_i$, where $h_i$ is called a **scale factor** (or metric coefficient). The unit basis vectors $\hat{e}_1, \hat{e}_2, \hat{e}_3$ point along the coordinate directions and are orthogonal to each other.
+
+For **spherical coordinates** $(r, \theta, \phi)$ where $x = r\sin\theta\cos\phi$, $y = r\sin\theta\sin\phi$, $z = r\cos\theta$:
+
+$$
+h_r = 1, \quad h_\theta = r, \quad h_\phi = r\sin\theta
+$$ {#eq-spherical-scale-factors}
+
+For **cylindrical coordinates** $(s, \phi, z)$ where $x = s\cos\phi$, $y = s\sin\phi$, $z = z$:
+
+$$
+h_s = 1, \quad h_\phi = s, \quad h_z = 1
+$$ {#eq-cylindrical-scale-factors}
+
+(Griffiths uses $s$ for the cylindrical radial coordinate to avoid confusion with the spherical $r$. We follow this convention.)
+
+A volume element in orthogonal curvilinear coordinates is:
+
+$$
+dV = h_1 h_2 h_3\, du_1\, du_2\, du_3
+$$ {#eq-volume-element}
+
+So in spherical coordinates $dV = r^2 \sin\theta\, dr\, d\theta\, d\phi$, and in cylindrical coordinates $dV = s\, ds\, d\phi\, dz$.
+
+## Vector Operators in Curvilinear Coordinates
+
+The general formulas in orthogonal curvilinear coordinates are:
+
+$$
+\nabla f = \sum_i \frac{1}{h_i}\frac{\partial f}{\partial u_i}\hat{e}_i
+$$ {#eq-gradient-curvilinear}
+
+$$
+\nabla \cdot \mathbf{A} = \frac{1}{h_1 h_2 h_3}\sum_i \frac{\partial}{\partial u_i}\!\left(\frac{h_1 h_2 h_3}{h_i} A_i\right)
+$$ {#eq-divergence-curvilinear}
+
+$$
+\nabla^2 f = \frac{1}{h_1 h_2 h_3}\sum_i \frac{\partial}{\partial u_i}\!\left(\frac{h_1 h_2 h_3}{h_i^2}\frac{\partial f}{\partial u_i}\right)
+$$ {#eq-laplacian-curvilinear}
+
+You don't need to memorize these in full generality — just know they exist and understand that the specific formulas below come from plugging in the appropriate scale factors.
+
+### Spherical Coordinates
+
+$$
+\nabla f = \frac{\partial f}{\partial r}\hat{r} + \frac{1}{r}\frac{\partial f}{\partial \theta}\hat{\theta} + \frac{1}{r\sin\theta}\frac{\partial f}{\partial \phi}\hat{\phi}
+$$ {#eq-gradient-spherical}
+
+$$
+\nabla \cdot \mathbf{A} = \frac{1}{r^2}\frac{\partial}{\partial r}(r^2 A_r) + \frac{1}{r\sin\theta}\frac{\partial}{\partial \theta}(\sin\theta\, A_\theta) + \frac{1}{r\sin\theta}\frac{\partial A_\phi}{\partial \phi}
+$$ {#eq-divergence-spherical}
+
+$$
+\nabla^2 f = \frac{1}{r^2}\frac{\partial}{\partial r}\!\left(r^2\frac{\partial f}{\partial r}\right) + \frac{1}{r^2\sin\theta}\frac{\partial}{\partial \theta}\!\left(\sin\theta\frac{\partial f}{\partial \theta}\right) + \frac{1}{r^2\sin^2\theta}\frac{\partial^2 f}{\partial \phi^2}
+$$ {#eq-laplacian-spherical}
+
+The spherical Laplacian can also be written as:
+
+$$
+\nabla^2 f = \frac{1}{r}\frac{\partial^2}{\partial r^2}(rf) + \frac{1}{r^2\sin\theta}\frac{\partial}{\partial \theta}\!\left(\sin\theta\frac{\partial f}{\partial \theta}\right) + \frac{1}{r^2\sin^2\theta}\frac{\partial^2 f}{\partial \phi^2}
+$$ {#eq-laplacian-spherical-alt}
+
+which is useful when solving the radial part of Laplace's equation (see @sec-separation-of-variables).
+
+### Cylindrical Coordinates
+
+$$
+\nabla f = \frac{\partial f}{\partial s}\hat{s} + \frac{1}{s}\frac{\partial f}{\partial \phi}\hat{\phi} + \frac{\partial f}{\partial z}\hat{z}
+$$ {#eq-gradient-cylindrical}
+
+$$
+\nabla \cdot \mathbf{A} = \frac{1}{s}\frac{\partial}{\partial s}(s A_s) + \frac{1}{s}\frac{\partial A_\phi}{\partial \phi} + \frac{\partial A_z}{\partial z}
+$$ {#eq-divergence-cylindrical}
+
+$$
+\nabla^2 f = \frac{1}{s}\frac{\partial}{\partial s}\!\left(s\frac{\partial f}{\partial s}\right) + \frac{1}{s^2}\frac{\partial^2 f}{\partial \phi^2} + \frac{\partial^2 f}{\partial z^2}
+$$ {#eq-laplacian-cylindrical}
+
+::: {.callout-tip}
+## Which Coordinate System to Use
+
+The answer is almost always: **use the coordinate system that matches the symmetry of your sources or boundary conditions.**
+
+- **Point charge, uniformly charged sphere, concentric spherical shells** → spherical coordinates. The charge distribution depends only on $r$, so the potential will too.
+- **Infinite line charge, coaxial cable, solenoid** → cylindrical coordinates. The symmetry is azimuthal ($\phi$-independent) and translational in $z$.
+- **Parallel plate capacitor, rectangular waveguide, anything with flat boundaries** → Cartesian coordinates.
+- **Problems with mixed symmetry** (e.g., a sphere in a uniform external field) → pick the system that simplifies the *boundary conditions*, even if the sources have different symmetry. Often this means spherical coordinates, with the uniform field expressed as $E_0 r\cos\theta$.
+:::
+
+## A Warning About Basis Vectors
+
+In Cartesian coordinates, the unit vectors $\hat{x}, \hat{y}, \hat{z}$ are constant — they don't change direction as you move through space. This is **not** true in curvilinear coordinates. The basis vectors $\hat{r}, \hat{\theta}, \hat{\phi}$ in spherical coordinates *depend on position*.
+
+This has a critical consequence: when you compute derivatives of vector quantities (as you need to do for the curl of the vector potential, for example), you must differentiate the basis vectors as well. This is why the curl formula in spherical coordinates is complicated — it's not just applying $\partial/\partial u_i$ to the components; you also pick up terms from differentiating $\hat{e}_i$.
+
+The formula for the curl in spherical coordinates is best remembered via the determinant:
+
+$$
+\nabla \times \mathbf{A} = \frac{1}{r^2\sin\theta}
+\begin{vmatrix}
+\hat{r} & r\hat{\theta} & r\sin\theta\,\hat{\phi} \\
+\partial_r & \partial_\theta & \partial_\phi \\
+A_r & r A_\theta & r\sin\theta\, A_\phi
+\end{vmatrix}
+$$ {#eq-curl-spherical}
+
+Don't memorize it — look it up until you've used it so many times it's memorized.
+
+## Reading Guide
+
+| Source | Coverage |
+|--------|----------|
+| Griffiths §1.4 | Spherical and cylindrical coordinates; line, surface, volume elements; grad/div/curl/Laplacian formulas |
+| Boas Ch. 10 §1–5 | General curvilinear coordinates; scale factors; derivation of the formulas |

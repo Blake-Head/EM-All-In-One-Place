@@ -1,0 +1,110 @@
+---
+title: "Math Interlude: Spherical Harmonics"
+subtitle: "The natural language for problems with full angular dependence"
+reading:
+  boas: "Ch. 12 (§7–10)"
+  zangwill: "§7.2"
+classes: math-interlude
+---
+
+::: {.callout-note}
+## Math Interlude
+
+The spherical harmonics $Y_\ell^m(\theta,\phi)$ are the complete orthonormal basis for functions on the sphere. They are the angular eigenfunctions of the Laplacian in spherical coordinates and appear throughout physics — not just in electrostatics but in quantum mechanics (angular momentum eigenstates), nuclear physics, seismology, and cosmology.
+:::
+
+## Definition
+
+The spherical harmonics are:
+
+$$
+Y_\ell^m(\theta,\phi) = \epsilon\sqrt{\frac{(2\ell+1)}{4\pi}\frac{(\ell-|m|)!}{(\ell+|m|)!}}\,P_\ell^m(\cos\theta)\,e^{im\phi}
+$$ {#eq-spherical-harmonic-definition}
+
+where $\epsilon = (-1)^m$ for $m > 0$ and $\epsilon = 1$ for $m \leq 0$ (Condon-Shortley phase convention). The integers satisfy $\ell \geq 0$ and $-\ell \leq m \leq \ell$.
+
+For the first few:
+
+$$
+Y_0^0 = \sqrt{\frac{1}{4\pi}}
+$$ {#eq-Y00}
+
+$$
+Y_1^0 = \sqrt{\frac{3}{4\pi}}\cos\theta, \quad Y_1^{\pm 1} = \mp\sqrt{\frac{3}{8\pi}}\sin\theta\, e^{\pm i\phi}
+$$ {#eq-Y1m}
+
+$$
+Y_2^0 = \sqrt{\frac{5}{16\pi}}(3\cos^2\theta-1), \quad Y_2^{\pm 1} = \mp\sqrt{\frac{15}{8\pi}}\sin\theta\cos\theta\, e^{\pm i\phi}, \quad Y_2^{\pm 2} = \sqrt{\frac{15}{32\pi}}\sin^2\theta\, e^{\pm 2i\phi}
+$$ {#eq-Y2m}
+
+Note the relationship to the Cartesian coordinates restricted to the unit sphere:
+$Y_0^0 \propto 1$, $Y_1^m \propto \{x,y,z\}/r$, $Y_2^m \propto \{xy, xz, yz, x^2-y^2, 2z^2-x^2-y^2\}/r^2$.
+
+## Orthogonality and Completeness
+
+The spherical harmonics are **orthonormal** on the sphere:
+
+$$
+\int_0^{2\pi}d\phi\int_0^{\pi}\sin\theta\, d\theta\; Y_\ell^m(\theta,\phi)^*\,Y_{\ell'}^{m'}(\theta,\phi) = \delta_{\ell\ell'}\delta_{mm'}
+$$ {#eq-spherical-harmonic-orthogonality}
+
+They are also **complete**: any square-integrable function on the sphere can be expanded as:
+
+$$
+f(\theta,\phi) = \sum_{\ell=0}^{\infty}\sum_{m=-\ell}^{\ell} c_{\ell m}\, Y_\ell^m(\theta,\phi)
+$$ {#eq-spherical-harmonic-expansion}
+
+with coefficients:
+
+$$
+c_{\ell m} = \int Y_\ell^m(\theta,\phi)^*\, f(\theta,\phi)\, d\Omega
+$$ {#eq-spherical-harmonic-coefficients}
+
+where $d\Omega = \sin\theta\, d\theta\, d\phi$ is the solid angle element.
+
+## The Addition Theorem
+
+The **addition theorem** is one of the most useful identities in physics:
+
+$$
+P_\ell(\cos\gamma) = \frac{4\pi}{2\ell+1}\sum_{m=-\ell}^{\ell} Y_\ell^m(\hat{r})^*\, Y_\ell^m(\hat{r}')
+$$ {#eq-addition-theorem}
+
+where $\gamma$ is the angle between the unit vectors $\hat{r}$ and $\hat{r}'$.
+
+This converts the single Legendre polynomial with angle $\gamma$ (the angle between two directions) into a sum of products of spherical harmonics depending separately on the two directions. It's the key identity that makes @eq-addition-theorem-expansion work and that enables the full spherical harmonic multipole expansion in Zangwill.
+
+::: {.callout-tip}
+## Why Spherical Harmonics Are the "Natural Language"
+
+In quantum mechanics, $Y_\ell^m(\theta,\phi)$ are the angular eigenfunctions of $\hat{L}^2$ and $\hat{L}_z$. In E&M, they are the angular eigenfunctions of $-r^2\nabla^2$. The same functions appear because both contexts involve the same underlying mathematics: the Laplacian on the sphere, which is the Casimir operator of the rotation group SO(3).
+
+The quantum mechanics connection is not a coincidence — it's telling you that the multipole expansion is really a decomposition into irreducible representations of the rotation group. The $2\ell+1$ terms in each multipole all transform the same way under rotation. This is the "real reason" the expansion is natural, and Zangwill hints at this while Griffiths stays at the practical level.
+:::
+
+## The Potential in Terms of Spherical Harmonics
+
+The general solution to Laplace's equation in spherical coordinates is:
+
+$$
+V(r,\theta,\phi) = \sum_{\ell=0}^{\infty}\sum_{m=-\ell}^{\ell}\!\left(A_{\ell m}\, r^\ell + \frac{B_{\ell m}}{r^{\ell+1}}\right) Y_\ell^m(\theta,\phi)
+$$ {#eq-laplace-spherical-harmonics}
+
+This is the generalization of @eq-spherical-general-solution to problems without azimuthal symmetry. The coefficients $A_{\ell m}$ and $B_{\ell m}$ are fixed by boundary conditions via @eq-spherical-harmonic-coefficients.
+
+The multipole moments are encapsulated in the $B_{\ell m}$ coefficients for the exterior potential:
+
+$$
+B_{\ell m} = \frac{1}{2\ell+1}\frac{1}{\epsilon_0}\int r'^\ell\, Y_\ell^m(\hat{r}')^*\, \rho(\mathbf{r}')\, dV'
+$$
+
+which defines the **spherical multipole moments** $q_{\ell m}$.
+
+## Reading Guide
+
+| Source | Coverage |
+|--------|----------|
+| Boas Ch. 12 §7–9 | Spherical harmonics; $Y_\ell^m$ defined; orthogonality; examples |
+| Boas Ch. 12 §10 | Addition theorem; applications |
+| Zangwill §7.2 | Spherical harmonics in the context of Laplace's equation; multipole theory |
+| Griffiths §3.3 | The $m=0$ case (Legendre polynomials) is treated in detail; $m \neq 0$ is mentioned but not developed |

@@ -1,0 +1,85 @@
+project:
+  type: book
+
+book:
+  title: "E&M: All In One Place"
+  subtitle: "An Integrated Approach to Classical Electrodynamics"
+  author: "Blake Head"
+  date: today
+  repo-url: https://github.com/Blake-Head/EM-All-In-One-Place
+  repo-actions: [edit, issue]
+  search: true
+
+  navbar:
+    right:
+      - icon: github
+        href: https://github.com/Blake-Head/EM-All-In-One-Place
+        aria-label: GitHub
+
+  sidebar:
+    style: docked
+    search: true
+
+  chapters:
+    - index.qmd
+    - part: "Phase 0 — Vector Calculus"
+      chapters:
+        - phase-0-vector-calculus/01-gradient-divergence-curl.qmd
+        - phase-0-vector-calculus/02-integral-theorems.qmd
+        - phase-0-vector-calculus/03-curvilinear-coordinates.qmd
+        - phase-0-vector-calculus/04-dirac-delta.qmd
+    - part: "Phase 1 — Electrostatics"
+      chapters:
+        - phase-1-electrostatics/01-coulomb-gauss.qmd
+        - phase-1-electrostatics/02-electric-potential.qmd
+        - phase-1-electrostatics/03-separation-of-variables.qmd
+        - phase-1-electrostatics/04-multipole-expansion.qmd
+        - phase-1-electrostatics/05-greens-functions.qmd
+        - phase-1-electrostatics/math-legendre-polynomials.qmd
+        - phase-1-electrostatics/math-spherical-harmonics.qmd
+    - part: "Phase 2 — Dielectrics"
+      chapters:
+        - phase-2-dielectrics/index.qmd
+    - part: "Phase 3 — Magnetostatics"
+      chapters:
+        - phase-3-magnetostatics/index.qmd
+    - part: "Phase 4 — Electrodynamics"
+      chapters:
+        - phase-4-electrodynamics/index.qmd
+    - part: "Phase 5 — Electromagnetic Waves"
+      chapters:
+        - phase-5-waves/index.qmd
+    - part: "Phase 6 — Radiation"
+      chapters:
+        - phase-6-radiation/index.qmd
+    - part: "Phase 7 — Relativity & Electrodynamics"
+      chapters:
+        - phase-7-relativity/index.qmd
+    - part: "Phase 8 — Advanced Topics"
+      chapters:
+        - phase-8-advanced/index.qmd
+    - part: "Appendices"
+      chapters:
+        - appendices/notation-conventions.qmd
+        - appendices/formula-reference.qmd
+        - appendices/reading-map.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme:
+      - cosmo
+      - assets/css/custom.scss
+    mainfont: "Source Serif 4"
+    monofont: "Fira Code"
+    code-copy: true
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    number-depth: 3
+    fig-align: center
+    html-math-method: mathjax
+
+execute:
+  freeze: auto

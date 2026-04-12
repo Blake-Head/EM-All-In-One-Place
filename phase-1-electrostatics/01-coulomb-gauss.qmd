@@ -1,0 +1,123 @@
+---
+title: "Coulomb's Law and Gauss's Law"
+subtitle: "From the force between charges to the fundamental field equations of electrostatics"
+reading:
+  griffiths: "§2.1–2.2"
+  zangwill: "§3.1–3.3"
+---
+
+## Coulomb's Law
+
+The empirical starting point of electrostatics is **Coulomb's law**: the force on a test charge $q$ due to a source charge $Q$ is:
+
+$$
+\mathbf{F} = \frac{1}{4\pi\epsilon_0}\frac{qQ}{r^2}\hat{r}
+$$ {#eq-coulombs-law}
+
+where $\hat{r}$ points from $Q$ to $q$, and $\epsilon_0 = 8.854 \times 10^{-12}$ C²/(N·m²) is the permittivity of free space. The force is repulsive for like charges, attractive for unlike charges, and falls off as $r^{-2}$.
+
+The most important word in that sentence is *empirical*. We don't derive this from anything more fundamental in classical theory — it is the experimentally observed starting point. (Quantum electrodynamics does explain it, but that's a different story.)
+
+## The Principle of Superposition
+
+Electrostatics is a linear theory. The force on a test charge due to multiple source charges is simply the **vector sum** of the individual Coulomb forces. This is the **superposition principle**, and it is not obvious — it's a deep physical fact.
+
+For a collection of discrete charges $Q_i$ at positions $\mathbf{r}_i$:
+
+$$
+\mathbf{F} = \frac{q}{4\pi\epsilon_0}\sum_i Q_i \frac{\hat{\mathscr{r}}_i}{\mathscr{r}_i^2}
+$$ {#eq-superposition-discrete}
+
+where $\mathscr{r}_i = |\mathbf{r} - \mathbf{r}_i|$ is the magnitude of the **separation vector** $\boldsymbol{\mathscr{r}}_i = \mathbf{r} - \mathbf{r}_i$ (Griffiths' script-$\mathscr{r}$ notation). For a continuous charge distribution with volume charge density $\rho(\mathbf{r}')$:
+
+$$
+\mathbf{F} = \frac{q}{4\pi\epsilon_0}\int \rho(\mathbf{r}')\frac{\hat{\mathscr{r}}}{\mathscr{r}^2}\, dV'
+$$ {#eq-superposition-continuous}
+
+where the integral is over the source volume and $\boldsymbol{\mathscr{r}} = \mathbf{r} - \mathbf{r}'$.
+
+## The Electric Field
+
+It's convenient to factor out the test charge and define the **electric field** $\mathbf{E}(\mathbf{r})$ as the force per unit charge:
+
+$$
+\mathbf{E}(\mathbf{r}) = \frac{\mathbf{F}}{q} = \frac{1}{4\pi\epsilon_0}\int \rho(\mathbf{r}')\frac{\hat{\mathscr{r}}}{\mathscr{r}^2}\, dV'
+$$ {#eq-e-field-definition}
+
+The electric field is a property of space (due to the source charges), independent of the test charge. A test charge $q$ placed at $\mathbf{r}$ feels force $\mathbf{F} = q\mathbf{E}(\mathbf{r})$.
+
+**The field concept is not just mathematical convenience.** It captures the physical reality that information about charge configurations propagates outward at the speed of light. In electrostatics (no time dependence), we don't see this propagation — but the field formulation naturally accommodates it when we move to full electrodynamics.
+
+## Gauss's Law
+
+Gauss's law is the most useful single equation in electrostatics. In integral form:
+
+$$
+\oint_{\mathcal{S}} \mathbf{E} \cdot d\mathbf{a} = \frac{Q_{\text{enc}}}{\epsilon_0}
+$$ {#eq-gauss-integral}
+
+The total electric flux out of any closed surface equals the total enclosed charge divided by $\epsilon_0$.
+
+In differential form (using the divergence theorem):
+
+$$
+\nabla \cdot \mathbf{E} = \frac{\rho}{\epsilon_0}
+$$ {#eq-gauss-differential}
+
+This is one of Maxwell's four equations. The divergence of $\mathbf{E}$ at any point equals the charge density there (in units of $\epsilon_0$). Electric charges are the sources of the divergence of $\mathbf{E}$.
+
+::: {.callout-tip}
+## Griffiths → Zangwill Bridge: Gauss's Law
+
+**Griffiths** derives Gauss's law for a single point charge by computing the solid angle subtended by the surface, then uses superposition to generalize. It's a beautiful geometric argument.
+
+**Zangwill** (§3.3) derives Gauss's law as an immediate consequence of the $1/r^2$ dependence of the Coulomb field — using exactly the $\nabla \cdot (\hat{r}/r^2) = 4\pi\delta^3(\mathbf{r})$ identity we saw in @sec-dirac-delta. He then emphasizes that Gauss's law is *more* fundamental than Coulomb's law: it remains valid in full electrodynamics (where Coulomb's law fails for time-varying fields), as long as it's interpreted carefully.
+
+The lesson: Gauss's law is not just a consequence of Coulomb's law. It's a statement about the topology of the $1/r^2$ field, and its differential form $\nabla \cdot \mathbf{E} = \rho/\epsilon_0$ is one of the bedrock equations of physics.
+:::
+
+## Using Gauss's Law: Symmetry is Everything
+
+Gauss's law in integral form is only *easily* useful when the charge distribution has enough symmetry that $\mathbf{E}$ has constant magnitude and direction on a convenient Gaussian surface. The three canonical cases:
+
+**Spherical symmetry** (e.g., uniformly charged sphere): Use a concentric spherical Gaussian surface. $\mathbf{E}$ is radial and constant in magnitude on the sphere, so:
+
+$$
+E(4\pi r^2) = \frac{Q_{\text{enc}}}{\epsilon_0} \implies \mathbf{E} = \frac{Q_{\text{enc}}}{4\pi\epsilon_0 r^2}\hat{r}
+$$ {#eq-gauss-spherical}
+
+**Cylindrical symmetry** (e.g., infinite line charge): Use a coaxial cylindrical Gaussian surface of radius $s$ and length $L$:
+
+$$
+E(2\pi s L) = \frac{\lambda L}{\epsilon_0} \implies \mathbf{E} = \frac{\lambda}{2\pi\epsilon_0 s}\hat{s}
+$$ {#eq-gauss-cylindrical}
+
+**Planar symmetry** (e.g., infinite plane of charge): Use a pillbox Gaussian surface straddling the plane. Flux exits through both flat faces:
+
+$$
+2EA = \frac{\sigma A}{\epsilon_0} \implies \mathbf{E} = \frac{\sigma}{2\epsilon_0}\hat{n}
+$$ {#eq-gauss-planar}
+
+For less symmetric distributions, Gauss's law in differential form is more useful — it tells you how $\mathbf{E}$ varies locally, and you integrate to get the global field.
+
+## The Curl of E (in Statics)
+
+In electrostatics, the electric field is **curl-free**:
+
+$$
+\nabla \times \mathbf{E} = 0
+$$ {#eq-curl-E-static}
+
+This follows directly from Coulomb's law and superposition: the field of any static charge distribution is the superposition of radial $1/r^2$ fields, and each one is curl-free.
+
+The physical consequence: **the work done moving a test charge is path-independent**. The line integral of $\mathbf{E}$ around any closed loop is zero. This allows us to define an electric potential $V$ such that $\mathbf{E} = -\nabla V$ — the subject of the next section.
+
+## Reading Guide
+
+| Source | Coverage |
+|--------|----------|
+| Griffiths §2.1 | Coulomb's law, electric field, continuous distributions, field lines |
+| Griffiths §2.2 | Divergence of $\mathbf{E}$, Gauss's law, applications |
+| Zangwill §3.1 | Coulomb's law from the postulates of electrostatics |
+| Zangwill §3.2 | Electric field, superposition |
+| Zangwill §3.3 | Gauss's law, Earnshaw's theorem |

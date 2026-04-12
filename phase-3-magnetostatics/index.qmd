@@ -1,0 +1,47 @@
+---
+title: "Phase 3 — Magnetostatics"
+---
+
+> 🚧 **Under Construction** — This phase is outlined and will be developed in full. The structure and reading map below guide independent study in the meantime.
+
+## Overview
+
+Magnetostatics is the counterpart to electrostatics: we study the magnetic fields produced by *steady* currents (charge in motion, but not accelerating, so no time-varying electric fields). The structure closely parallels electrostatics — there's a source law (Biot-Savart, analogous to Coulomb) and a field equation (Ampère's law, analogous to Gauss's) — but important differences emerge, most notably the absence of magnetic monopoles ($\nabla\cdot\mathbf{B} = 0$) and the utility of the vector potential $\mathbf{A}$.
+
+## Topics
+
+- **The Lorentz force**: $\mathbf{F} = q(\mathbf{E} + \mathbf{v}\times\mathbf{B})$; magnetic forces do no work
+- **The Biot-Savart law**: $\mathbf{B} = \frac{\mu_0}{4\pi}\int \frac{I\,d\mathbf{l}' \times \hat{\mathscr{r}}}{\mathscr{r}^2}$; field of a straight wire, circular loop
+- **Ampère's law**: $\nabla\times\mathbf{B} = \mu_0\mathbf{J}$ (differential); $\oint\mathbf{B}\cdot d\mathbf{l} = \mu_0 I_{\text{enc}}$ (integral)
+- **$\nabla\cdot\mathbf{B} = 0$**: no magnetic monopoles; $\mathbf{B} = \nabla\times\mathbf{A}$ for some vector potential $\mathbf{A}$
+- **The vector potential $\mathbf{A}$**: Coulomb gauge ($\nabla\cdot\mathbf{A} = 0$); $\nabla^2\mathbf{A} = -\mu_0\mathbf{J}$
+- **Magnetic multipole expansion**: the analogue of the electrostatic multipole; the magnetic monopole is absent; magnetic dipole moment
+- **Magnetic matter**: magnetization $\mathbf{M}$; bound currents $\mathbf{K}_b = \mathbf{M}\times\hat{n}$, $\mathbf{J}_b = \nabla\times\mathbf{M}$
+- **The $\mathbf{H}$ field**: $\mathbf{H} = \frac{1}{\mu_0}\mathbf{B} - \mathbf{M}$; Ampère's law for $\mathbf{H}$
+- **Linear, nonlinear, ferromagnetic materials**: susceptibility, permeability, hysteresis
+
+## Reading Map
+
+| Topic | Griffiths | Zangwill | Boas |
+|-------|-----------|----------|------|
+| Lorentz force, currents | Ch. 5 §1 | Ch. 10 §1 | — |
+| Biot-Savart law | Ch. 5 §2 | Ch. 10 §2 | — |
+| Ampère's law | Ch. 5 §3 | Ch. 10 §3 | — |
+| Vector potential | Ch. 5 §4 | Ch. 10 §4–5 | — |
+| Magnetic multipoles | — | Ch. 11 §1–3 | — |
+| Magnetization, $\mathbf{H}$ field | Ch. 6 | Ch. 11 §4–7 | — |
+| Ferromagnetism | Ch. 6 §4 | Ch. 11 §8 | — |
+
+## Key Equations
+
+$$
+\mathbf{B} = \frac{\mu_0}{4\pi}\int \frac{\mathbf{J}(\mathbf{r}')\times\hat{\mathscr{r}}}{\mathscr{r}^2}\,dV', \qquad \nabla\cdot\mathbf{B} = 0, \qquad \nabla\times\mathbf{B} = \mu_0\mathbf{J}
+$$
+
+$$
+\mathbf{B} = \nabla\times\mathbf{A}, \qquad \text{(Coulomb gauge: } \nabla^2\mathbf{A} = -\mu_0\mathbf{J}\text{)}
+$$
+
+$$
+\mathbf{m} = \frac{1}{2}\int\mathbf{r}'\times\mathbf{J}(\mathbf{r}')\,dV' \quad \text{(magnetic dipole moment)}
+$$

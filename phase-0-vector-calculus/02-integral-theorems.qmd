@@ -1,0 +1,108 @@
+---
+title: "The Integral Theorems"
+subtitle: "Connecting local field behavior to global fluxes and circulations"
+reading:
+  boas: "Ch. 6 (§6–10)"
+  schey: "Ch. 4–7"
+  griffiths: "§1.3"
+---
+
+## The Grand Unification of Calculus
+
+The fundamental theorem of calculus says: to find the total change in $f$ over an interval, integrate its derivative. The integral theorems of vector calculus are the higher-dimensional versions of this idea — and they are, without exaggeration, the backbone of electromagnetism.
+
+Every major result in E&M — Gauss's law in integral form, Faraday's law in integral form, Ampère's law — is an integral theorem applied to Maxwell's equations. Understanding these theorems geometrically, not just as formulas to apply, is essential.
+
+## The Divergence Theorem (Gauss's Theorem)
+
+Let $\mathbf{F}$ be a vector field defined in a volume $\mathcal{V}$ bounded by a closed surface $\mathcal{S}$ with outward-pointing normal $\hat{n}$. Then:
+
+$$
+\oint_{\mathcal{S}} \mathbf{F} \cdot d\mathbf{a} = \int_{\mathcal{V}} (\nabla \cdot \mathbf{F})\, dV
+$$ {#eq-divergence-theorem}
+
+**In plain English:** The total *flux* of $\mathbf{F}$ out through the surface equals the total *source density* integrated over the volume inside.
+
+**Physical picture:** Imagine $\mathbf{F}$ as the velocity field of a fluid. The left side counts how much fluid is flowing out through the surface per unit time. The right side counts all the "faucets" (sources) inside the volume. These must be equal: every drop that flows out had to come from somewhere inside.
+
+**How it creates Gauss's law:** Faraday tells us $\nabla \cdot \mathbf{E} = \rho/\epsilon_0$. Integrate both sides over a volume and apply the divergence theorem:
+
+$$
+\oint_{\mathcal{S}} \mathbf{E} \cdot d\mathbf{a} = \int_{\mathcal{V}} \frac{\rho}{\epsilon_0}\, dV = \frac{Q_{\text{enc}}}{\epsilon_0}
+$$ {#eq-gauss-integral}
+
+The integral form of Gauss's law drops out directly. The divergence theorem is the bridge between the differential and integral forms of all the flux laws.
+
+## Stokes' Theorem
+
+Let $\mathbf{F}$ be a vector field on a surface $\mathcal{S}$ bounded by a closed curve $\mathcal{C}$ (oriented by the right-hand rule). Then:
+
+$$
+\oint_{\mathcal{C}} \mathbf{F} \cdot d\mathbf{l} = \int_{\mathcal{S}} (\nabla \times \mathbf{F}) \cdot d\mathbf{a}
+$$ {#eq-stokes-theorem}
+
+**In plain English:** The total *circulation* of $\mathbf{F}$ around the loop equals the total *curl* integrated over any surface spanning the loop.
+
+**Physical picture:** Imagine small paddlewheels placed throughout the surface, oriented perpendicular to the surface. Each wheel spins at a rate proportional to the local curl. The total circulation around the boundary is the sum of all the local spinning. Stokes' theorem says these are the same thing.
+
+Note the crucial qualifier: "any surface spanning the loop." The result is independent of which surface you choose, as long as it shares the same boundary $\mathcal{C}$. This is a non-trivial geometric fact.
+
+**How it creates Faraday's law:** The differential form says $\nabla \times \mathbf{E} = -\partial\mathbf{B}/\partial t$. Integrate over a surface and apply Stokes:
+
+$$
+\oint_{\mathcal{C}} \mathbf{E} \cdot d\mathbf{l} = -\frac{d}{dt}\int_{\mathcal{S}} \mathbf{B} \cdot d\mathbf{a} = -\frac{d\Phi_B}{dt}
+$$ {#eq-faraday-integral}
+
+Faraday's law in integral form says the EMF around a loop equals minus the rate of change of magnetic flux through the loop.
+
+## Green's Theorems
+
+Green's theorems are really just the divergence theorem applied to specific combinations of fields involving two scalar functions $f$ and $g$.
+
+**Green's first identity:** Apply the divergence theorem to $\mathbf{F} = f\,\nabla g$:
+
+$$
+\int_{\mathcal{V}} (f\,\nabla^2 g + \nabla f \cdot \nabla g)\, dV = \oint_{\mathcal{S}} f\,(\nabla g) \cdot d\mathbf{a}
+$$ {#eq-greens-first}
+
+**Green's second identity** (the more useful one): subtract the same equation with $f$ and $g$ swapped:
+
+$$
+\int_{\mathcal{V}} (f\,\nabla^2 g - g\,\nabla^2 f)\, dV = \oint_{\mathcal{S}} (f\,\nabla g - g\,\nabla f) \cdot d\mathbf{a}
+$$ {#eq-greens-second}
+
+::: {.callout-important}
+## Why Green's Second Identity Matters
+
+Green's second identity looks like an abstract manipulation, but it is the foundational equation for Green function methods in electrostatics. When we set $g = G(\mathbf{r}, \mathbf{r}')$ (the Green function for the Laplacian) and $f = V(\mathbf{r})$ (the potential we want to find), this identity becomes an integral formula for $V$ in terms of its boundary values. That's the magic of Green functions — and it flows directly from @eq-greens-second. We'll see this in detail in @sec-greens-functions.
+:::
+
+## Why These Theorems Are the Backbone of E&M
+
+These aren't just mathematical conveniences. They encode the deep physical structure of field theories:
+
+1. **Local versus global.** Maxwell's equations in differential form are local statements — they describe field relationships at a single point. The integral theorems connect these local statements to measurable global quantities: fluxes through surfaces, circulations around loops. The two descriptions are equivalent, but each is useful in different contexts.
+
+2. **Conservation laws.** The divergence theorem is the mathematical basis for all continuity equations. If $\nabla \cdot \mathbf{J} + \partial\rho/\partial t = 0$ (charge conservation), then the divergence theorem tells you that charge doesn't jump from place to place — any change in the charge inside a volume must be accompanied by current flowing through the surface.
+
+3. **Boundary value problems.** Green's theorems show that knowing the field on the boundary of a region completely determines the field inside (given the source distribution). This is why "boundary conditions" are so central to electrostatics.
+
+## The Fundamental Theorem of Calculus in Three Forms
+
+It helps to see these three theorems as a unified family:
+
+| Theorem | Operation | Boundary Relation |
+|---------|-----------|-------------------|
+| Gradient theorem | $\nabla f$ | $\int_a^b \nabla f \cdot d\mathbf{l} = f(b) - f(a)$ |
+| Divergence theorem | $\nabla \cdot \mathbf{F}$ | $\int_\mathcal{V} \nabla \cdot \mathbf{F}\, dV = \oint_\mathcal{S} \mathbf{F} \cdot d\mathbf{a}$ |
+| Stokes' theorem | $\nabla \times \mathbf{F}$ | $\int_\mathcal{S} (\nabla \times \mathbf{F}) \cdot d\mathbf{a} = \oint_\mathcal{C} \mathbf{F} \cdot d\mathbf{l}$ |
+
+Each theorem relates the integral of a derivative over a region to the function's values on the *boundary* of that region. This is the generalized Stokes' theorem in the language of differential forms, but the physical content is the same: derivatives and boundaries are dual to each other.
+
+## Reading Guide
+
+| Source | Coverage |
+|--------|----------|
+| Griffiths §1.3 | Integral calculus: line, surface, and volume integrals; divergence theorem; Stokes' theorem |
+| Boas Ch. 6 §6–10 | Careful treatment of all three theorems with worked examples |
+| Schey Ch. 4–7 | Superb geometric treatment; especially good on the physical interpretation of Stokes' theorem |

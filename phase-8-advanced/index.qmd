@@ -1,0 +1,55 @@
+---
+title: "Phase 8 — Advanced Topics"
+---
+
+> 🚧 **Under Construction** — This phase is outlined and will be developed in full. The structure and reading map below guide independent study in the meantime.
+
+## Overview
+
+Phase 8 collects advanced and capstone topics from Zangwill that go beyond what is typically covered in a graduate E&M course, touching on connections to quantum mechanics, condensed matter, and modern physics. These topics are not prerequisites for each other, so they can be explored in any order according to interest.
+
+## Topics
+
+### Scattering of Electromagnetic Waves
+
+- **Rayleigh scattering**: scattering from particles much smaller than $\lambda$; the $\omega^4$ dependence and why the sky is blue
+- **Mie scattering**: exact solution for scattering from a sphere of any size; resonances; the forward scattering amplitude
+- **The optical theorem**: the imaginary part of the forward scattering amplitude determines the total cross section; connection to the optical theorem in quantum mechanics
+
+### Topological and Gauge Aspects
+
+- **The Aharonov-Bohm effect**: a charged particle is affected by the vector potential even in regions where $\mathbf{B} = 0$; the phase $\oint\mathbf{A}\cdot d\mathbf{l}$ is observable
+- **Magnetic monopoles**: Dirac's argument; the quantization condition $eg = 2\pi\hbar n$; why monopoles would imply charge quantization
+- **Berry phases** in electrodynamics
+
+### Quantum and Thermal Effects
+
+- **Van der Waals forces**: the $1/r^6$ interaction between neutral atoms from dipole-dipole fluctuations; London interaction
+- **The Casimir effect**: the attractive force between two parallel conducting plates due to vacuum fluctuations; $F/A = -\pi^2\hbar c/(240 d^4)$
+- **The fluctuation-dissipation theorem**: connecting the absorptive part of the dielectric function to thermal fluctuations; connection to the Johnson-Nyquist noise formula
+
+## Reading Map
+
+| Topic | Zangwill | Notes |
+|-------|----------|-------|
+| Scattering | Ch. 18 | Requires Phase 5 |
+| Aharonov-Bohm, monopoles | Ch. 12–14 | Requires Phase 4 |
+| Van der Waals, Casimir | Ch. 24 | Requires quantum mechanics background |
+| Fluctuation-dissipation | Ch. 24 | Requires stat mech background |
+
+## Key Equations
+
+Rayleigh scattering cross section:
+$$
+\sigma \propto \frac{\omega^4}{c^4}\alpha^2
+$$
+
+Casimir force per unit area:
+$$
+\frac{F}{A} = -\frac{\pi^2 \hbar c}{240\,d^4}
+$$
+
+Aharonov-Bohm phase:
+$$
+\Delta\phi = \frac{q}{\hbar}\oint_{\mathcal{C}} \mathbf{A}\cdot d\mathbf{l} = \frac{q\Phi_B}{\hbar}
+$$

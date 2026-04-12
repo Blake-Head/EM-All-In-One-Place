@@ -1,0 +1,168 @@
+---
+title: "The Multipole Expansion"
+subtitle: "Decomposing the far-field potential into monopole, dipole, quadrupole, and higher contributions"
+reading:
+  griffiths: "§3.4"
+  zangwill: "§4.1–4.3, §7.1–7.3"
+  boas: "Ch. 12"
+---
+
+## The Physical Motivation
+
+You have a localized charge distribution — a molecule, an antenna, a charged body — and you want to know the electric potential far away. You don't need to know the potential in fine detail near the source. You just want the dominant behavior at large $r$.
+
+The multipole expansion does exactly this: it decomposes the potential at large distances into an organized series, ordered by how rapidly each term falls off with distance. The first term (monopole) falls off as $r^{-1}$, the second (dipole) as $r^{-2}$, the third (quadrupole) as $r^{-3}$, and so on. Far from the source, only the first nonzero term matters.
+
+## Setting Up the Expansion
+
+Place a localized charge distribution $\rho(\mathbf{r}')$ inside a sphere of radius $R$. For a field point $\mathbf{r}$ with $r \gg R$ (i.e., far outside the source), we want to expand:
+
+$$
+V(\mathbf{r}) = \frac{1}{4\pi\epsilon_0}\int \frac{\rho(\mathbf{r}')}{|\mathbf{r} - \mathbf{r}'|}\, dV'
+$$ {#eq-multipole-start}
+
+The key is to expand $1/|\mathbf{r} - \mathbf{r}'|$ for $r' \ll r$. This is where the two textbooks diverge in their approaches.
+
+::: {.callout-tip}
+## Griffiths → Zangwill Bridge: Two Derivations of the Same Expansion
+
+**Griffiths' approach** (§3.4) is concrete and geometric. He uses the law of cosines on the triangle formed by $\mathbf{r}$, $\mathbf{r}'$, and their separation, then applies the binomial expansion to get:
+
+$$
+\frac{1}{|\mathbf{r} - \mathbf{r}'|} = \frac{1}{r}\sum_{\ell=0}^{\infty}\left(\frac{r'}{r}\right)^\ell P_\ell(\cos\alpha)
+$$ {#eq-1-over-r-expansion}
+
+where $\alpha$ is the angle between $\mathbf{r}$ and $\mathbf{r}'$, and $P_\ell$ are the Legendre polynomials. This is elegant and hands-on.
+
+**Zangwill's approach** (§7.3) uses the **addition theorem for spherical harmonics**:
+
+$$
+\frac{1}{|\mathbf{r} - \mathbf{r}'|} = 4\pi\sum_{\ell=0}^{\infty}\sum_{m=-\ell}^{\ell} \frac{1}{2\ell+1}\frac{r_<^\ell}{r_>^{\ell+1}}Y_{\ell m}^*(\hat{r}')Y_{\ell m}(\hat{r})
+$$ {#eq-addition-theorem-expansion}
+
+where $r_< = \min(r,r')$ and $r_> = \max(r,r')$. This looks more complicated, but it's the natural "right" way — the spherical harmonics are eigenfunctions of the angular part of the Laplacian, and the multipole expansion is their Fourier decomposition.
+
+**What to take from this:** Griffiths' approach gives you physical intuition and a derivation you can reproduce by hand. Zangwill's approach gives you the framework for calculating multipole moments of *any* order systematically, and connects directly to the theory of angular momentum in quantum mechanics. Both are worth understanding.
+:::
+
+## The Expansion in Terms of Multipole Moments
+
+Substituting @eq-1-over-r-expansion into @eq-multipole-start, for a field point with polar angle $\theta$ measured from some chosen axis:
+
+$$
+V(\mathbf{r}) = \frac{1}{4\pi\epsilon_0}\sum_{\ell=0}^{\infty}\frac{1}{r^{\ell+1}}\int (r')^\ell P_\ell(\cos\alpha)\, \rho(\mathbf{r}')\, dV'
+$$ {#eq-multipole-expansion-general}
+
+For each $\ell$, the integral over the source defines a **multipole moment**. Let's examine the first three.
+
+### Monopole Term ($\ell = 0$)
+
+$$
+V_{\text{mono}} = \frac{1}{4\pi\epsilon_0}\frac{1}{r}\int \rho(\mathbf{r}')\, dV' = \frac{1}{4\pi\epsilon_0}\frac{Q_{\text{tot}}}{r}
+$$ {#eq-monopole}
+
+The monopole moment is just the total charge $Q_{\text{tot}}$. This term dominates at large distances for any distribution with nonzero net charge. It falls off as $1/r$.
+
+### Dipole Term ($\ell = 1$)
+
+$$
+V_{\text{dip}} = \frac{1}{4\pi\epsilon_0}\frac{1}{r^2}\int r'\cos\alpha\, \rho(\mathbf{r}')\, dV'
+$$ {#eq-dipole-v}
+
+Since $r'\cos\alpha = \mathbf{r}' \cdot \hat{r}$, this is:
+
+$$
+V_{\text{dip}} = \frac{1}{4\pi\epsilon_0}\frac{\mathbf{p} \cdot \hat{r}}{r^2}
+$$ {#eq-dipole-potential}
+
+where the **dipole moment** is:
+
+$$
+\mathbf{p} = \int \mathbf{r}'\, \rho(\mathbf{r}')\, dV'
+$$ {#eq-dipole-moment}
+
+For discrete charges: $\mathbf{p} = \sum_i q_i \mathbf{r}_i'$. For two charges $+q$ and $-q$ separated by displacement $\mathbf{d}$ (from $-q$ to $+q$): $\mathbf{p} = q\mathbf{d}$.
+
+The dipole contribution falls off as $1/r^2$. If $Q_{\text{tot}} = 0$ (as for a neutral molecule), the dipole term dominates.
+
+### Quadrupole Term ($\ell = 2$)
+
+$$
+V_{\text{quad}} = \frac{1}{4\pi\epsilon_0}\frac{1}{r^3}\int (r')^2 P_2(\cos\alpha)\, \rho(\mathbf{r}')\, dV'
+$$ {#eq-quadrupole-v}
+
+Using $P_2(\cos\alpha) = \frac{1}{2}(3\cos^2\alpha - 1)$ and expressing $\cos\alpha = \hat{r}\cdot\hat{r}'$, this introduces the **quadrupole tensor**:
+
+$$
+Q_{ij} = \int (3r_i'r_j' - r'^2\delta_{ij})\, \rho(\mathbf{r}')\, dV'
+$$ {#eq-quadrupole-tensor}
+
+The quadrupole potential can be written as:
+
+$$
+V_{\text{quad}} = \frac{1}{4\pi\epsilon_0}\frac{1}{2r^3}\sum_{i,j}\hat{r}_i Q_{ij}\hat{r}_j
+$$ {#eq-quadrupole-potential}
+
+This falls off as $1/r^3$.
+
+## The Electric Dipole Field
+
+The most important multipole (after the monopole) is the dipole. Taking $\mathbf{p} = p\hat{z}$, the potential @eq-dipole-potential gives the electric field by $\mathbf{E} = -\nabla V$:
+
+$$
+\mathbf{E}_{\text{dip}} = \frac{p}{4\pi\epsilon_0 r^3}(2\cos\theta\,\hat{r} + \sin\theta\,\hat{\theta})
+$$ {#eq-dipole-field}
+
+The field lines of a pure dipole have a characteristic figure-eight pattern. Notice: the $r$-component goes as $r^{-3}$ (faster than Coulomb!), as expected for a term where the two charges partially cancel.
+
+::: {.callout-important}
+## The Dipole Field in Compact Form
+
+It's worth knowing the compact tensor form of the dipole field:
+
+$$
+\mathbf{E}_{\text{dip}}(\mathbf{r}) = \frac{1}{4\pi\epsilon_0}\left[\frac{3(\mathbf{p}\cdot\hat{r})\hat{r} - \mathbf{p}}{r^3} - \frac{1}{3\epsilon_0}\mathbf{p}\,\delta^3(\mathbf{r})\right]
+$$ {#eq-dipole-field-compact}
+
+The delta function term accounts for the field exactly at the origin (inside the dipole). It's invisible for most field-point calculations but crucial for computing things like the hyperfine splitting in hydrogen — where the nucleus actually lives at the origin.
+:::
+
+## Interactive Visualization
+
+```{ojs}
+//| echo: false
+// TODO: Interactive multipole field visualization
+// This block will allow the user to:
+//   - Select multipole order (monopole, dipole, quadrupole, octupole)
+//   - For dipole: adjust orientation angle
+//   - For quadrupole: adjust the shape (prolate vs oblate)
+//   - Display equipotential lines and field lines in 2D cross-section
+//   - Show how the field strength falls off along different directions
+// The visualization will make clear how higher multipoles become
+// increasingly concentrated near the poles as ell increases.
+viewof multipoleOrder = Inputs.select(["monopole", "dipole", "quadrupole"], {label: "Multipole order"})
+```
+
+## Physical Applications
+
+The multipole expansion is not just a mathematical exercise:
+
+- **Electrostatics of molecules**: The leading term determines chemical bonding, van der Waals forces, and electrostatic interactions between molecules. A nonpolar molecule (like N₂) has $\mathbf{p} = 0$ but can have a nonzero quadrupole moment.
+- **Radiation fields**: In Phase 6, we'll see that accelerating charges radiate electromagnetic radiation. The dominant radiation comes from the time-varying dipole moment — this is *electric dipole radiation*, the most important type.
+- **Nuclear physics**: Quadrupole moments of nuclei reveal their shape (prolate vs. oblate deformation).
+- **Gravitational analogy**: The same expansion applies to gravity. The Earth's gravitational field deviates from $1/r^2$ partly due to its quadrupole moment (it's oblate — squashed at the poles).
+
+## Reading Guide
+
+| Source | Coverage |
+|--------|----------|
+| Griffiths §3.4 | Multipole expansion via law of cosines; monopole, dipole, quadrupole; dipole field |
+| Zangwill §4.1–4.3 | Multipole expansion; monopole and dipole; energy and force on a dipole |
+| Zangwill §7.1–7.3 | Full multipole theory with spherical harmonics; multipole moments as tensors |
+| Boas Ch. 12 | Legendre polynomials (needed for the expansion) |
+
+::: {.callout-tip}
+## Math Interlude Pointer
+
+The Legendre polynomials $P_\ell(\cos\theta)$ that appear in this expansion are the subject of the [Legendre Polynomials interlude](math-legendre-polynomials.qmd). Their orthogonality property is what allows you to extract multipole moments from a known potential: multiply by $P_{\ell'}(\cos\theta)$ and integrate over a sphere.
+:::

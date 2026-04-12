@@ -1,0 +1,137 @@
+---
+title: "Electric Potential"
+subtitle: "Reducing the vector problem to a scalar one — and revealing the energy structure of electrostatics"
+reading:
+  griffiths: "§2.3–2.4"
+  zangwill: "§3.4–3.5"
+---
+
+## From Field to Potential
+
+We showed in the previous section that $\nabla \times \mathbf{E} = 0$ in electrostatics. By the Helmholtz decomposition, any curl-free vector field can be written as the gradient of a scalar. So there exists a scalar field $V(\mathbf{r})$ — the **electric potential** — such that:
+
+$$
+\mathbf{E} = -\nabla V
+$$ {#eq-e-from-potential}
+
+The minus sign is a convention: the field points from high potential to low, i.e., "downhill" in $V$.
+
+The potential due to a point charge $Q$ at the origin is:
+
+$$
+V(r) = \frac{1}{4\pi\epsilon_0}\frac{Q}{r}
+$$ {#eq-potential-point-charge}
+
+For a continuous charge distribution:
+
+$$
+V(\mathbf{r}) = \frac{1}{4\pi\epsilon_0}\int \frac{\rho(\mathbf{r}')}{|\mathbf{r} - \mathbf{r}'|}\, dV'
+$$ {#eq-potential-continuous}
+
+**Why is this useful?** Because $V$ is a scalar. Instead of finding all three components of $\mathbf{E}$ by superposition (which involves messy vector addition), we compute a single scalar integral $V$, then differentiate once. For complex charge distributions, this is almost always easier.
+
+## Potential Difference and the Path Integral
+
+The potential difference between two points $\mathbf{a}$ and $\mathbf{b}$ is:
+
+$$
+V(\mathbf{b}) - V(\mathbf{a}) = -\int_{\mathbf{a}}^{\mathbf{b}} \mathbf{E} \cdot d\mathbf{l}
+$$ {#eq-potential-difference}
+
+This is path-independent (since $\nabla \times \mathbf{E} = 0$, by Stokes' theorem $\oint \mathbf{E} \cdot d\mathbf{l} = 0$). The potential is well-defined up to a constant, which is fixed by choosing a reference point where $V = 0$. For localized charge distributions, the convention is $V(\infty) = 0$.
+
+## Poisson's and Laplace's Equations
+
+Substitute $\mathbf{E} = -\nabla V$ into Gauss's law $\nabla \cdot \mathbf{E} = \rho/\epsilon_0$:
+
+$$
+\nabla \cdot (-\nabla V) = \frac{\rho}{\epsilon_0}
+$$
+
+$$
+\boxed{\nabla^2 V = -\frac{\rho}{\epsilon_0}}
+$$ {#eq-poissons-equation}
+
+This is **Poisson's equation** — the fundamental PDE of electrostatics. Given the charge distribution, it determines the potential everywhere.
+
+In regions where there is no free charge ($\rho = 0$):
+
+$$
+\nabla^2 V = 0
+$$ {#eq-laplaces-equation}
+
+This is **Laplace's equation**. It governs the potential in the space between charges, outside conductors, and in dielectric media (before accounting for bound charges). Its solutions — **harmonic functions** — have beautiful mathematical properties, most importantly the **mean value theorem**: $V$ at any point equals the average of $V$ over any sphere centered on that point. This means $V$ has no local maxima or minima in charge-free regions (Earnshaw's theorem).
+
+## Boundary Conditions
+
+At the interface between two media, the fields must satisfy boundary conditions derived from Maxwell's equations. For electrostatics:
+
+The **normal component** of $\mathbf{E}$ is discontinuous by the surface charge density $\sigma$:
+
+$$
+E_{\text{above}}^{\perp} - E_{\text{below}}^{\perp} = \frac{\sigma}{\epsilon_0}
+$$ {#eq-bc-normal-E}
+
+Or equivalently, in terms of the potential:
+
+$$
+\left.\frac{\partial V}{\partial n}\right|_{\text{above}} - \left.\frac{\partial V}{\partial n}\right|_{\text{below}} = -\frac{\sigma}{\epsilon_0}
+$$ {#eq-bc-normal-V}
+
+The **tangential component** of $\mathbf{E}$ is always continuous (since $\nabla \times \mathbf{E} = 0$ implies no discontinuity in tangential $\mathbf{E}$):
+
+$$
+E_{\text{above}}^{\parallel} = E_{\text{below}}^{\parallel}
+$$ {#eq-bc-tangential-E}
+
+Equivalently, $V$ itself is continuous across any surface (as long as the surface charge density is finite):
+
+$$
+V_{\text{above}} = V_{\text{below}}
+$$ {#eq-bc-potential-continuous}
+
+These boundary conditions are the constraints that uniquely determine the solution to Poisson's/Laplace's equation in bounded regions.
+
+## Energy Stored in an Electric Field
+
+It takes work to assemble a charge distribution. This work is stored as potential energy in the electric field. For a continuous distribution:
+
+$$
+W = \frac{1}{2}\int \rho\, V\, dV
+$$ {#eq-energy-charge-distribution}
+
+Using $\rho = \epsilon_0 \nabla \cdot \mathbf{E}$ and integrating by parts (Green's first identity), this becomes:
+
+$$
+W = \frac{\epsilon_0}{2}\int_{\text{all space}} E^2\, dV
+$$ {#eq-energy-field}
+
+This is a profound result. The energy is not *in the charges* — it is stored in the **electric field itself**, with an energy density:
+
+$$
+u = \frac{\epsilon_0}{2}E^2
+$$ {#eq-energy-density}
+
+This field-centric view of energy becomes essential in electrodynamics, where the electromagnetic field can transport energy through empty space as radiation.
+
+::: {.callout-note}
+## Conductors in Electrostatics
+
+A perfect conductor has a few key properties that follow directly from $\mathbf{E} = -\nabla V$ and $\nabla \cdot \mathbf{E} = \rho/\epsilon_0$:
+
+- **$\mathbf{E} = 0$ inside a conductor.** If there's any field inside, free electrons accelerate until they cancel it.
+- **$V$ is constant inside and on the surface.** (Follows from $\mathbf{E} = -\nabla V = 0$ inside.)
+- **$\rho = 0$ inside; all free charge resides on the surface.** (Apply Gauss's law inside.)
+- **$\mathbf{E}$ is perpendicular to the surface** just outside. (The surface is an equipotential.)
+
+These properties make conductors natural boundary conditions for Laplace's equation — we know $V$ on conductor surfaces, which is the Dirichlet boundary condition.
+:::
+
+## Reading Guide
+
+| Source | Coverage |
+|--------|----------|
+| Griffiths §2.3 | Electric potential, Poisson/Laplace equations, potential of various charge distributions |
+| Griffiths §2.4 | Work and energy in electrostatics; energy in the field |
+| Zangwill §3.4 | Potential formulation, Coulomb gauge, uniqueness theorems |
+| Zangwill §3.5 | Electrostatic energy; energy density; self-energy issues |

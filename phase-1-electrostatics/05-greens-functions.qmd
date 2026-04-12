@@ -1,0 +1,89 @@
+---
+title: "Green Functions"
+subtitle: "The systematic machinery for solving boundary value problems in electrostatics"
+reading:
+  griffiths: "§3.1"
+  zangwill: "§7.4–7.8"
+  boas: "Ch. 8"
+---
+
+## What Is a Green Function? {#sec-greens-functions}
+
+Separation of variables works beautifully when the geometry is simple. But what happens when you have an arbitrary charge distribution inside a bounded region with arbitrary boundary conditions? You need a more systematic tool.
+
+A **Green function** is the potential due to a unit point charge, subject to the same boundary conditions as your problem. Once you have it, the potential for any charge distribution is a superposition (integral) over point charge contributions. This transforms Poisson's equation from a PDE into an integral equation — and that integral can often be evaluated exactly or efficiently.
+
+Formally, the **Green function** $G(\mathbf{r}, \mathbf{r}')$ for the Laplacian in a region $\mathcal{V}$ satisfies:
+
+$$
+\nabla^2 G(\mathbf{r}, \mathbf{r}') = -4\pi\,\delta^3(\mathbf{r} - \mathbf{r}')
+$$ {#eq-green-function-definition}
+
+with some boundary condition on the surface $\mathcal{S}$ bounding $\mathcal{V}$.
+
+::: {.callout-note}
+## The Factor of $-4\pi$
+
+The factor of $-4\pi$ in @eq-green-function-definition is a convention (Griffiths and Zangwill both use it). The free-space Green function is then:
+
+$$
+G_0(\mathbf{r}, \mathbf{r}') = \frac{1}{|\mathbf{r} - \mathbf{r}'|}
+$$
+
+which is exactly the $1/\mathscr{r}$ that appears in the Coulomb potential. With this convention, the Coulomb potential of a unit charge at $\mathbf{r}'$ is $V(\mathbf{r}) = G_0(\mathbf{r},\mathbf{r}')/(4\pi\epsilon_0)$. Some authors (and Zangwill in some places) absorb the $4\pi$ differently; always check the convention.
+:::
+
+## The Formal Solution
+
+Using Green's second identity (@eq-greens-second) with $f = V$ (the potential we seek) and $g = G(\mathbf{r},\mathbf{r}')$, and using the defining equation @eq-green-function-definition:
+
+$$
+V(\mathbf{r}) = \frac{1}{4\pi\epsilon_0}\int_\mathcal{V} G(\mathbf{r},\mathbf{r}')\rho(\mathbf{r}')\, dV' + \frac{1}{4\pi}\oint_\mathcal{S}\!\left[G(\mathbf{r},\mathbf{r}')\frac{\partial V}{\partial n'} - V(\mathbf{r}')\frac{\partial G}{\partial n'}\right] da'
+$$ {#eq-formal-solution}
+
+The boundary term simplifies depending on the type of boundary condition:
+
+- **Dirichlet BC** ($V$ specified on $\mathcal{S}$): Choose $G_D = 0$ on $\mathcal{S}$. The first boundary term vanishes, and only $V_{\text{surface}}$ appears.
+- **Neumann BC** ($\partial V/\partial n$ specified on $\mathcal{S}$): Choose $\partial G_N/\partial n = -4\pi/A$ on $\mathcal{S}$ (where $A$ is the area). The second term simplifies.
+
+## Symmetry of the Green Function
+
+A fundamental property: the Dirichlet Green function is **symmetric**:
+
+$$
+G(\mathbf{r}, \mathbf{r}') = G(\mathbf{r}', \mathbf{r})
+$$ {#eq-green-symmetry}
+
+Physically: the potential at $\mathbf{r}$ due to a point charge at $\mathbf{r}'$ equals the potential at $\mathbf{r}'$ due to a point charge at $\mathbf{r}$, with the same boundary conditions. This is a form of reciprocity and follows from Green's second identity.
+
+## Connection to the Method of Images
+
+The **method of images** is really just a clever way to construct the Green function for simple geometries. Consider a grounded infinite conducting plane. The boundary condition is $V = 0$ on the plane. The Green function (potential of a unit charge at $\mathbf{r}'$ with $V=0$ on the plane) is:
+
+$$
+G(\mathbf{r},\mathbf{r}') = \frac{1}{|\mathbf{r}-\mathbf{r}'|} - \frac{1}{|\mathbf{r}-\mathbf{r}'_{\text{image}}|}
+$$ {#eq-image-green}
+
+where $\mathbf{r}'_{\text{image}}$ is the reflection of $\mathbf{r}'$ in the plane. The "image charge" $-1$ (opposite sign) at the mirror-image location makes $G = 0$ on the plane. This satisfies all the defining properties of the Dirichlet Green function.
+
+Other geometries with known image solutions: sphere (one image charge plus a correction), two parallel planes (infinite sequence of images).
+
+## Why Green Functions Are the "Real Engine"
+
+Every other method in electrostatics is a special case or approximation of the Green function approach:
+
+- **Separation of variables** gives you the Green function in a specific coordinate system as an expansion in eigenfunctions. The Green function is just the spectral representation of $(-\nabla^2)^{-1}$.
+- **Multipole expansion** is the far-field approximation to the Green function expansion.
+- **Numerical methods** (FEM, BEM, etc.) are discretized approximations to the Green function integral.
+
+The Green function encodes all the geometric information about the boundary conditions. Once you have it, solving for *any* source distribution in that geometry is straightforward.
+
+## Reading Guide
+
+| Source | Coverage |
+|--------|----------|
+| Griffiths §3.1 | Method of images (grounded plane, sphere); uniqueness theorems |
+| Zangwill §7.4 | Green functions for the Laplacian; formal solution to Poisson's equation |
+| Zangwill §7.5–7.6 | Dirichlet and Neumann Green functions; method of images from the Green function perspective |
+| Zangwill §7.7–7.8 | Eigenfunction expansions of Green functions; sphere |
+| Boas Ch. 8 | Green functions for ODEs; physical interpretation |

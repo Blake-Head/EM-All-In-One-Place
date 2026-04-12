@@ -1,0 +1,124 @@
+---
+title: "The Dirac Delta Function"
+subtitle: "The mathematical tool for describing point sources in a continuous field theory"
+reading:
+  boas: "Ch. 8"
+  griffiths: "§1.5"
+---
+
+## Why We Need This
+
+Classical electrodynamics is a *field* theory. Fields are continuous functions defined at every point in space. But charges are often idealized as *points* — zero size, finite charge. This creates a mathematical tension: how do you describe a charge density that is infinite at a single point and zero everywhere else, yet integrates to a finite total charge?
+
+The answer is the **Dirac delta function**. It is not a function in the ordinary sense — it's a *distribution* (or generalized function) — but physicists use it as if it were a function, and with appropriate care, this is perfectly rigorous.
+
+## The 1D Delta Function
+
+The Dirac delta $\delta(x)$ is defined by two properties:
+
+$$
+\delta(x) = 0 \quad \text{for } x \neq 0
+$$ {#eq-delta-zero}
+
+$$
+\int_{-\infty}^{\infty} \delta(x)\, dx = 1
+$$ {#eq-delta-normalization}
+
+Think of $\delta(x)$ as the limit of a sequence of increasingly narrow, tall spike functions (a Gaussian, a rectangular pulse, a triangle) all with unit area. In the limit, the width goes to zero and the height goes to infinity, but the area stays 1.
+
+The most important property is the **sifting property**:
+
+$$
+\int_{-\infty}^{\infty} f(x)\, \delta(x - a)\, dx = f(a)
+$$ {#eq-sifting-property}
+
+This says: multiplying any function $f(x)$ by $\delta(x-a)$ and integrating picks out the value of $f$ at $x = a$. The delta function "sifts" out one value from the integrand. This is the property you'll use constantly.
+
+Some useful identities (all provable via the sifting property):
+
+$$
+\delta(cx) = \frac{1}{|c|}\delta(x)
+$$ {#eq-delta-scaling}
+
+$$
+\delta(g(x)) = \sum_i \frac{\delta(x - x_i)}{|g'(x_i)|}
+$$ {#eq-delta-function-composition}
+
+where the sum runs over all zeros $x_i$ of $g$.
+
+## The 3D Delta Function
+
+The three-dimensional delta function is simply the product of three 1D delta functions:
+
+$$
+\delta^3(\mathbf{r}) = \delta(x)\,\delta(y)\,\delta(z)
+$$ {#eq-3d-delta-cartesian}
+
+It has the properties:
+
+$$
+\delta^3(\mathbf{r}) = 0 \quad \text{for } \mathbf{r} \neq \mathbf{0}
+$$ {#eq-3d-delta-zero}
+
+$$
+\int_{\text{all space}} \delta^3(\mathbf{r})\, dV = 1
+$$ {#eq-3d-delta-normalization}
+
+$$
+\int_{\text{all space}} f(\mathbf{r})\, \delta^3(\mathbf{r} - \mathbf{r}')\, dV = f(\mathbf{r}')
+$$ {#eq-3d-sifting}
+
+A point charge $q$ located at position $\mathbf{r}'$ has charge density:
+
+$$
+\rho(\mathbf{r}) = q\, \delta^3(\mathbf{r} - \mathbf{r}')
+$$ {#eq-point-charge-density}
+
+This is how we reconcile "point charge" with "charge density" — the delta function is infinitely concentrated at one point but integrates to $q$.
+
+In spherical coordinates, with the source at the origin:
+
+$$
+\delta^3(\mathbf{r}) = \frac{\delta(r)}{4\pi r^2}
+$$ {#eq-3d-delta-spherical}
+
+Note the $4\pi r^2$ denominator — it comes from the spherical volume element $dV = r^2 \sin\theta\, dr\, d\theta\, d\phi$, integrated over angles.
+
+## The Key Identity: $\nabla^2(1/r)$
+
+Here is the single most important delta function identity in electrostatics:
+
+$$
+\nabla^2\!\left(\frac{1}{r}\right) = -4\pi\,\delta^3(\mathbf{r})
+$$ {#eq-laplacian-1-over-r}
+
+This looks surprising. For $r \neq 0$, you can compute $\nabla^2(1/r)$ directly and get zero — it satisfies Laplace's equation. But at $r = 0$ there's a singularity, and something must be hiding there.
+
+The way to see it is via the divergence theorem. Consider $\mathbf{F} = \nabla(1/r) = -\hat{r}/r^2$. For any sphere of radius $R$ centered at the origin:
+
+$$
+\oint \mathbf{F} \cdot d\mathbf{a} = \int \left(-\frac{\hat{r}}{r^2}\right) \cdot \hat{r}\, r^2 \sin\theta\, d\theta\, d\phi = -4\pi
+$$
+
+This is nonzero regardless of $R$ — so by the divergence theorem, $\nabla \cdot \mathbf{F}$ cannot be zero everywhere inside. The divergence must be a spike at the origin with integral $-4\pi$. That spike is $-4\pi\,\delta^3(\mathbf{r})$.
+
+::: {.callout-important}
+## Why @eq-laplacian-1-over-r Is Central to Electrostatics
+
+The Coulomb potential of a point charge $q$ at the origin is $V(r) = q/(4\pi\epsilon_0 r)$. Poisson's equation says $\nabla^2 V = -\rho/\epsilon_0$. Applying the Laplacian:
+
+$$
+\nabla^2 V = \frac{q}{4\pi\epsilon_0}\nabla^2\!\left(\frac{1}{r}\right) = \frac{q}{4\pi\epsilon_0}(-4\pi\delta^3(\mathbf{r})) = -\frac{q}{\epsilon_0}\delta^3(\mathbf{r}) = -\frac{\rho}{\epsilon_0}
+$$
+
+It works. The Coulomb potential satisfies Poisson's equation with the point charge source, but only because we account for the delta function singularity at the origin. This identity is the mathematical foundation of the Coulomb potential.
+
+More deeply: the function $G(\mathbf{r}, \mathbf{r}') = -1/(4\pi|\mathbf{r}-\mathbf{r}'|)$ is the **Green function** for the Laplacian, defined by $\nabla^2 G = \delta^3(\mathbf{r}-\mathbf{r}')$. This is the starting point for the entire Green function formalism we'll develop in @sec-greens-functions.
+:::
+
+## Reading Guide
+
+| Source | Coverage |
+|--------|----------|
+| Griffiths §1.5 | Dirac delta function from a physicist's perspective; @eq-laplacian-1-over-r derived and discussed |
+| Boas Ch. 8 | Delta function as a distribution; Green functions for ODEs |

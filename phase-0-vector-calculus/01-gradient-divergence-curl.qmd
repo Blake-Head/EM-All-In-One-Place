@@ -1,0 +1,143 @@
+---
+title: "Gradient, Divergence, and Curl"
+subtitle: "The three fundamental ways a vector field can vary in space"
+reading:
+  boas: "Ch. 6 (§1–10)"
+  schey: "Ch. 1–3"
+  griffiths: "§1.2–1.3"
+---
+
+## Why These Three Operations?
+
+Before we touch a single charge or current, we need the language of classical field theory: how do we describe a quantity that has a value at every point in space, and how do we talk about the *way it changes*?
+
+It turns out there are essentially three independent ways a smooth vector field $\mathbf{F}(\mathbf{r})$ can vary — three "modes" of spatial variation. These are captured by the **gradient** (of a scalar field), the **divergence**, and the **curl**. Everything in electromagnetism — Maxwell's equations, boundary conditions, energy densities — is written in terms of these three operations.
+
+## The Gradient
+
+The gradient operates on a **scalar field** $f(\mathbf{r})$ — think of a temperature distribution or an electric potential. The result is a **vector field** $\nabla f$ that points in the direction of steepest ascent of $f$, with magnitude equal to the rate of change in that direction.
+
+$$
+\nabla f = \frac{\partial f}{\partial x}\hat{x} + \frac{\partial f}{\partial y}\hat{y} + \frac{\partial f}{\partial z}\hat{z}
+$$ {#eq-gradient-cartesian}
+
+**Physical picture:** Stand on a hillside. The gradient of the elevation function points straight uphill, and its magnitude tells you how steep the slope is. If the electric potential is $V(\mathbf{r})$, then $-\nabla V$ gives the electric field — the direction a positive test charge will feel pushed (downhill in potential).
+
+The gradient is also the natural generalization of the ordinary derivative to multiple dimensions. The directional derivative of $f$ along a unit vector $\hat{n}$ is:
+
+$$
+\frac{df}{dn} = \nabla f \cdot \hat{n}
+$$ {#eq-directional-derivative}
+
+This says: to find how fast $f$ changes in any direction, just dot $\nabla f$ with that direction. The gradient packs all directional derivative information into a single vector.
+
+## The Divergence
+
+The divergence operates on a **vector field** $\mathbf{F}$ and produces a **scalar field** $\nabla \cdot \mathbf{F}$.
+
+$$
+\nabla \cdot \mathbf{F} = \frac{\partial F_x}{\partial x} + \frac{\partial F_y}{\partial y} + \frac{\partial F_z}{\partial z}
+$$ {#eq-divergence-cartesian}
+
+**Physical picture:** The divergence measures the *source density* of a field — how much field is "flowing out of" an infinitesimal volume per unit volume. Imagine $\mathbf{F}$ as a fluid velocity field. If $\nabla \cdot \mathbf{F} > 0$ at some point, fluid is being created there (a source). If $\nabla \cdot \mathbf{F} < 0$, fluid is being destroyed (a sink). If $\nabla \cdot \mathbf{F} = 0$ everywhere, the fluid is incompressible — as much flows in as flows out.
+
+In electrostatics, Gauss's law in differential form says:
+
+$$
+\nabla \cdot \mathbf{E} = \frac{\rho}{\epsilon_0}
+$$ {#eq-gauss-differential}
+
+The divergence of $\mathbf{E}$ equals the charge density (up to a constant). Electric charges are the *sources* and *sinks* of the electric field.
+
+## The Curl
+
+The curl operates on a **vector field** $\mathbf{F}$ and produces another **vector field** $\nabla \times \mathbf{F}$.
+
+$$
+\nabla \times \mathbf{F} = \left(\frac{\partial F_z}{\partial y} - \frac{\partial F_y}{\partial z}\right)\hat{x}
++ \left(\frac{\partial F_x}{\partial z} - \frac{\partial F_z}{\partial x}\right)\hat{y}
++ \left(\frac{\partial F_y}{\partial x} - \frac{\partial F_x}{\partial y}\right)\hat{z}
+$$ {#eq-curl-cartesian}
+
+This determinant mnemonic is worth memorizing:
+
+$$
+\nabla \times \mathbf{F} = \begin{vmatrix} \hat{x} & \hat{y} & \hat{z} \\ \partial_x & \partial_y & \partial_z \\ F_x & F_y & F_z \end{vmatrix}
+$$ {#eq-curl-determinant}
+
+**Physical picture:** The curl measures the *circulation density* of a field — how much the field "swirls" around an infinitesimal loop. Its direction is the axis of rotation (via the right-hand rule), and its magnitude is proportional to the rotation rate. 
+
+A field with nonzero curl is called **non-conservative** or **rotational**. In magnetostatics, Ampère's law in differential form says $\nabla \times \mathbf{B} = \mu_0 \mathbf{J}$: electric currents are the sources of the curl of the magnetic field.
+
+## Key Identities
+
+Two identities are so important they should become reflexes:
+
+$$
+\nabla \times (\nabla f) = \mathbf{0}
+$$ {#eq-curl-of-gradient}
+
+**The curl of any gradient is zero.** If a vector field is the gradient of some scalar, it has no circulation — it's a conservative field. This is why you can define an electric potential in electrostatics: since $\nabla \times \mathbf{E} = 0$ (in statics), $\mathbf{E}$ must be the gradient of something.
+
+$$
+\nabla \cdot (\nabla \times \mathbf{F}) = 0
+$$ {#eq-div-of-curl}
+
+**The divergence of any curl is zero.** A field that is the curl of something has no sources. This will be critical when we discuss the magnetic field: $\nabla \cdot \mathbf{B} = 0$ (no magnetic monopoles) is equivalent to saying $\mathbf{B} = \nabla \times \mathbf{A}$ for some vector potential $\mathbf{A}$.
+
+These two identities are not arbitrary — they reflect the nilpotency of the exterior derivative in differential forms, but we don't need that language here. Just know they're deep.
+
+::: {.callout-note}
+## Key Insight: The Helmholtz Decomposition
+
+Any "well-behaved" vector field can be uniquely decomposed into a **curl-free part** (a gradient) and a **divergence-free part** (a curl):
+
+$$
+\mathbf{F} = -\nabla \phi + \nabla \times \mathbf{A}
+$$
+
+This is the Helmholtz decomposition, and it's the mathematical backbone of electrodynamics. The electric field in general has *both* parts: $-\nabla V$ (from charges) and $-\partial \mathbf{A}/\partial t$ (from changing magnetic fields). The magnetic field has only the curl part (since $\nabla \cdot \mathbf{B} = 0$). Maxwell's equations are really just statements about the divergences and curls of $\mathbf{E}$ and $\mathbf{B}$.
+:::
+
+## The Laplacian
+
+The **Laplacian** is the divergence of the gradient:
+
+$$
+\nabla^2 f = \nabla \cdot (\nabla f) = \frac{\partial^2 f}{\partial x^2} + \frac{\partial^2 f}{\partial y^2} + \frac{\partial^2 f}{\partial z^2}
+$$ {#eq-laplacian}
+
+It measures the *average* of $f$ over a small sphere minus the value at the center. Laplace's equation ($\nabla^2 V = 0$) says the potential has no sources and no sinks — it's the "flattest possible" function consistent with the boundary conditions. Poisson's equation ($\nabla^2 V = -\rho/\epsilon_0$) tells you how charges create potential.
+
+The vector Laplacian $\nabla^2 \mathbf{F}$ applies the scalar Laplacian to each component in Cartesian coordinates — but beware, this simple formula breaks down in curvilinear coordinates (see @sec-curvilinear).
+
+## Interactive Visualization
+
+```{ojs}
+//| echo: false
+// TODO: Interactive vector field visualization using Observable Plot
+// This block will display:
+//   - A 2D grid showing vector field arrows for a user-selectable field
+//     (e.g., uniform field, point source, dipole, rotating field)
+//   - Color coding of the divergence (red = source, blue = sink)
+//   - Color coding of the curl magnitude
+//   - Toggle to show field lines
+// Implementation: Observable Plot with a dropdown to select field type
+// and sliders to adjust parameters
+viewof fieldType = Inputs.select(["uniform", "point source", "dipole", "rotation"], {label: "Field type"})
+```
+
+## Reading Guide
+
+| Source | Coverage |
+|--------|----------|
+| Griffiths §1.2 | Vector algebra and calculus; gradient, divergence, curl defined geometrically |
+| Griffiths §1.3 | Integral calculus (line, surface, volume integrals) |
+| Boas Ch. 6 §1–10 | Vector analysis from the ground up, with many worked examples |
+| Schey Ch. 1–3 | Geometric intuition for div, grad, curl — excellent for rebuilding physical intuition |
+
+::: {.callout-tip}
+## Schey is Worth Your Time
+
+If the geometric meaning of divergence and curl feels fuzzy, Schey's *Div, Grad, Curl, and All That* is the cure. It's short (~170 pages) and focuses entirely on building physical intuition for these operations. Reading it in parallel with Griffiths Ch. 1 and Boas Ch. 6 is time very well spent.
+:::
