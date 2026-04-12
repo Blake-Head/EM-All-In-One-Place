@@ -79,7 +79,19 @@ format:
     number-sections: true
     number-depth: 3
     fig-align: center
-    html-math-method: mathjax
+    html-math-method:
+      method: mathjax
+      url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    include-in-header:
+      - text: |
+          <script>
+            MathJax = {
+              chtml: {
+                scale: 1.2,
+                minScale: 0.5
+              }
+            };
+          </script>
 
 execute:
   freeze: auto
