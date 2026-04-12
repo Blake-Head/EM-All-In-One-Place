@@ -10,12 +10,6 @@ book:
   repo-actions: [edit, issue]
   search: true
 
-  navbar:
-    right:
-      - icon: github
-        href: https://github.com/Blake-Head/EM-All-In-One-Place
-        aria-label: GitHub
-
   sidebar:
     style: docked
     search: true
@@ -69,7 +63,8 @@ bibliography: references.bib
 format:
   html:
     theme:
-      dark: darkly
+# Darkmode Options: darkly, slate, solar, superhero, vapor
+      dark: superhero
       light: cosmo
     css: assets/css/custom.scss
     grid:
