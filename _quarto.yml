@@ -64,7 +64,7 @@ format:
   html:
     theme:
 # Darkmode Options: darkly (most popular), slate, solar, superhero, vapor
-      dark: vapor
+      dark: darkly
       light: cosmo
     css: assets/css/custom.scss
     grid:
