@@ -71,7 +71,11 @@ format:
     theme:
       dark: darkly
       light: cosmo
-#        - assets/css/custom.scss
+    css: assets/css/custom.scss
+    grid:
+      body-width: 1100px
+      sidebar-width: 300px
+      margin-width: 300px
     mainfont: "Source Serif 4"
     monofont: "Fira Code"
     code-copy: true
