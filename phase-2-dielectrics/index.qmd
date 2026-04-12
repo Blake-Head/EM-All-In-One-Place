@@ -1,0 +1,46 @@
+---
+title: "Phase 2 — Electrostatics in Matter (Dielectrics)"
+---
+
+> 🚧 **Under Construction** — This phase is outlined and will be developed in full. The structure and reading map below guide independent study in the meantime.
+
+## Overview
+
+When an electric field is applied to a material that is *not* a conductor, the atomic charges can't flow freely — but they can *shift slightly* from their equilibrium positions. The positive nuclei move a little one way, the electron clouds shift the other. The material becomes **polarized**. This microscopic displacement of charge has macroscopic consequences: the field inside the material differs from the field in vacuum, and a new, useful field quantity ($\mathbf{D}$, the electric displacement) emerges.
+
+Phase 2 develops the continuum theory of dielectric matter, connecting the microscopic picture of polarization to the macroscopic Maxwell equations inside materials.
+
+## Topics
+
+- **Polarization** $\mathbf{P}(\mathbf{r})$: the dipole moment per unit volume; definition and physical picture
+- **Bound charges**: surface bound charge $\sigma_b = \mathbf{P}\cdot\hat{n}$ and volume bound charge $\rho_b = -\nabla\cdot\mathbf{P}$; physical interpretation
+- **The displacement field $\mathbf{D}$**: defined by $\mathbf{D} = \epsilon_0\mathbf{E} + \mathbf{P}$; Gauss's law for $\mathbf{D}$
+- **Constitutive relations**: $\mathbf{P} = \epsilon_0\chi_e\mathbf{E}$ for linear dielectrics; $\mathbf{D} = \epsilon\mathbf{E} = \epsilon_0\epsilon_r\mathbf{E}$
+- **Boundary conditions** at dielectric interfaces: $D_\perp$ continuous, $E_\parallel$ continuous (in the absence of free surface charges)
+- **Energy in dielectrics**: $u = \frac{1}{2}\mathbf{D}\cdot\mathbf{E}$; force on dielectrics
+- **The Clausius-Mossotti relation**: connecting molecular polarizability $\alpha$ to the macroscopic susceptibility $\chi_e$; the local field problem
+- **Symmetry considerations**: why some crystals are piezoelectric or ferroelectric
+
+## Reading Map
+
+| Topic | Griffiths | Zangwill | Boas |
+|-------|-----------|----------|------|
+| Polarization, bound charges | Ch. 4 §1–2 | Ch. 6 §1–2 | — |
+| $\mathbf{D}$ field | Ch. 4 §3 | Ch. 6 §3–4 | — |
+| Linear dielectrics | Ch. 4 §4 | Ch. 6 §5–6 | — |
+| Clausius-Mossotti | — | Ch. 6 §7–8 | — |
+| Energy in dielectrics | Ch. 4 §4 | Ch. 6 §7 | — |
+
+## Key Equations
+
+$$
+\rho_b = -\nabla\cdot\mathbf{P}, \qquad \sigma_b = \mathbf{P}\cdot\hat{n}
+$$
+
+$$
+\nabla\cdot\mathbf{D} = \rho_f, \qquad \mathbf{D} = \epsilon_0\mathbf{E} + \mathbf{P}
+$$
+
+$$
+\frac{\epsilon_r - 1}{\epsilon_r + 2} = \frac{n\alpha}{3\epsilon_0} \quad \text{(Clausius-Mossotti)}
+$$

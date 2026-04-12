@@ -1,0 +1,118 @@
+---
+title: "Reading Map"
+---
+
+This table provides a comprehensive mapping between the sections of this book and the corresponding chapters in the primary reference texts. Use it to navigate between this guide and the original sources.
+
+**Texts:**
+- **G** = Griffiths, *Introduction to Electrodynamics*, 4th ed.
+- **Z** = Zangwill, *Modern Electrodynamics*
+- **B** = Boas, *Mathematical Methods in the Physical Sciences*, 3rd ed.
+- **S** = Schey, *Div, Grad, Curl, and All That*, 4th ed.
+
+---
+
+## Phase 0 — Vector Calculus
+
+| Section | Topic | G | Z | B | S |
+|---------|-------|---|---|---|---|
+| [01 — Gradient, Divergence, Curl](../phase-0-vector-calculus/01-gradient-divergence-curl.qmd) | The three differential operators | §1.2–1.3 | §1.1–1.2 | Ch. 6 §1–5 | Ch. 1–3 |
+| [02 — Integral Theorems](../phase-0-vector-calculus/02-integral-theorems.qmd) | Divergence theorem, Stokes, Green | §1.3 | §1.3 | Ch. 6 §6–10 | Ch. 4–7 |
+| [03 — Curvilinear Coordinates](../phase-0-vector-calculus/03-curvilinear-coordinates.qmd) | Spherical and cylindrical coords | §1.4 | §1.4 | Ch. 10 §1–5 | — |
+| [04 — Dirac Delta](../phase-0-vector-calculus/04-dirac-delta.qmd) | Point sources in field theory | §1.5 | §1.5 | Ch. 8 | — |
+
+---
+
+## Phase 1 — Electrostatics
+
+| Section | Topic | G | Z | B |
+|---------|-------|---|---|---|
+| [01 — Coulomb & Gauss](../phase-1-electrostatics/01-coulomb-gauss.qmd) | Coulomb's law, superposition, Gauss's law | §2.1–2.2 | §3.1–3.3 | — |
+| [02 — Electric Potential](../phase-1-electrostatics/02-electric-potential.qmd) | Potential, Poisson/Laplace, energy | §2.3–2.4 | §3.4–3.5 | — |
+| [03 — Separation of Variables](../phase-1-electrostatics/03-separation-of-variables.qmd) | Cartesian, spherical, cylindrical BVPs | §3.1–3.3 | §7.1–7.5 | Ch. 13 |
+| [04 — Multipole Expansion](../phase-1-electrostatics/04-multipole-expansion.qmd) | Monopole, dipole, quadrupole | §3.4 | §4.1–4.3, §7.1–7.3 | Ch. 12 |
+| [05 — Green Functions](../phase-1-electrostatics/05-greens-functions.qmd) | Green function formalism, method of images | §3.1 | §7.4–7.8 | Ch. 8 |
+| [Math: Legendre Polynomials](../phase-1-electrostatics/math-legendre-polynomials.qmd) | $P_\ell(x)$: equation, orthogonality, generating function | §3.3 | §7.1 | Ch. 12 §1–6 |
+| [Math: Spherical Harmonics](../phase-1-electrostatics/math-spherical-harmonics.qmd) | $Y_\ell^m(\theta,\phi)$: definition, addition theorem, completeness | — | §7.2 | Ch. 12 §7–10 |
+
+---
+
+## Phase 2 — Dielectrics
+
+| Topic | G | Z | B |
+|-------|---|---|---|
+| Polarization, bound charges | Ch. 4 §1–2 | Ch. 6 §1–2 | — |
+| Displacement field $\mathbf{D}$ | Ch. 4 §3 | Ch. 6 §3–4 | — |
+| Linear dielectrics, constitutive relations | Ch. 4 §4 | Ch. 6 §5–6 | — |
+| Clausius-Mossotti relation | — | Ch. 6 §7–8 | — |
+
+---
+
+## Phase 3 — Magnetostatics
+
+| Topic | G | Z | B |
+|-------|---|---|---|
+| Lorentz force, Biot-Savart | Ch. 5 §1–2 | Ch. 10 §1–2 | — |
+| Ampère's law, divergence of $\mathbf{B}$ | Ch. 5 §3 | Ch. 10 §3 | — |
+| Vector potential | Ch. 5 §4 | Ch. 10 §4–5 | — |
+| Magnetic multipoles | — | Ch. 11 §1–3 | — |
+| Magnetization, $\mathbf{H}$ field | Ch. 6 | Ch. 11 §4–7 | — |
+
+---
+
+## Phase 4 — Electrodynamics
+
+| Topic | G | Z | B |
+|-------|---|---|---|
+| Faraday's law, inductance | Ch. 7 §1–3 | Ch. 2 §3; Ch. 15 §1 | — |
+| Maxwell's displacement current, full equations | Ch. 7 §3 | Ch. 2 §4–6 | — |
+| Conservation laws, Poynting's theorem | Ch. 8 §1 | Ch. 5 §1–4 | — |
+| Maxwell stress tensor | Ch. 8 §2 | Ch. 5 §5–7 | Ch. 10 §6+ |
+| Gauge invariance | — | Ch. 15 §2–4 | — |
+| Retarded potentials | Ch. 10 §1 | Ch. 15 §5–7 | — |
+
+---
+
+## Phase 5 — Electromagnetic Waves
+
+| Topic | G | Z | B |
+|-------|---|---|---|
+| Waves in vacuum | Ch. 9 §1–2 | Ch. 16 §1–3 | — |
+| Waves in media | Ch. 9 §3 | Ch. 16 §4–6 | — |
+| Reflection and transmission | Ch. 9 §3 | Ch. 17 §1–4 | — |
+| Dispersion, Kramers-Kronig | — | Ch. 17 §5–11 | Ch. 7, Ch. 14 |
+| Waveguides | Ch. 9 §5 | Ch. 19 | — |
+
+---
+
+## Phase 6 — Radiation
+
+| Topic | G | Z | B |
+|-------|---|---|---|
+| Retarded potentials, Jefimenko | Ch. 10 §1–2 | Ch. 20 §1–3 | — |
+| Liénard-Wiechert potentials | Ch. 10 §3 | Ch. 20 §4–6 | — |
+| Larmor formula, dipole radiation | Ch. 11 §1–2 | Ch. 21 §1–5 | — |
+| Synchrotron and Čerenkov | — | Ch. 21 §6–8; Ch. 23 §1–3 | — |
+| Radiation reaction | Ch. 11 §3 | Ch. 23 §4–6 | — |
+
+---
+
+## Phase 7 — Relativity & Electrodynamics
+
+| Topic | G | Z | B |
+|-------|---|---|---|
+| Special relativity review | Ch. 12 §1–2 | Ch. 22 §1–2 | Ch. 10 |
+| Relativistic mechanics, four-vectors | Ch. 12 §2 | Ch. 22 §3 | Ch. 10 |
+| Field tensor, covariant Maxwell | Ch. 12 §3 | Ch. 22 §4–6 | — |
+| Stress-energy tensor | Ch. 12 §3 | Ch. 22 §7–8 | — |
+
+---
+
+## Phase 8 — Advanced Topics
+
+| Topic | Z | Notes |
+|-------|---|-------|
+| Scattering (Rayleigh, Mie, optical theorem) | Ch. 18 | Requires Phase 5 |
+| Aharonov-Bohm effect, monopoles | Ch. 12–14 | Requires Phase 4 |
+| Van der Waals, Casimir effect | Ch. 24 | Requires QM background |
+| Fluctuation-dissipation | Ch. 24 | Requires stat mech background |

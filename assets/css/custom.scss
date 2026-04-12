@@ -1,0 +1,208 @@
+/*-- scss:defaults --*/
+
+// Typography
+$font-size-base: 1.05rem;
+$line-height-base: 1.75;
+$headings-font-weight: 600;
+
+// Color palette
+$primary: #2c5f8a;           // Deep blue — physics content
+$math-accent: #5a4fcf;       // Indigo/violet — math interludes
+$bridge-accent: #b5860d;     // Amber/gold — Griffiths→Zangwill bridge callouts
+$reading-accent: #2a7a4b;    // Forest green — reading reference boxes
+$construction-accent: #c0392b; // Red — under construction notices
+
+/*-- scss:rules --*/
+
+// ─── Math Interlude Pages ───────────────────────────────────────────────────
+//
+// Pages with class: math-interlude get a subtle left border and background tint
+// to visually distinguish them from the main physics content.
+
+.page-layout-article .math-interlude-body,
+body.math-interlude {
+  background-color: #f6f4ff;
+}
+
+// Sidebar indicator for math interlude chapters
+.sidebar-item a[href*="math-"] {
+  &::before {
+    content: "∫ ";
+    color: $math-accent;
+    font-weight: 700;
+    font-size: 0.9em;
+  }
+}
+
+// Callout note on math interlude pages: indigo left border
+.math-interlude .callout-note,
+.callout.callout-style-default.callout-note.math-interlude-note {
+  border-left-color: $math-accent !important;
+  background-color: #f0eeff;
+
+  .callout-header {
+    background-color: #e8e4ff;
+    color: $math-accent;
+  }
+}
+
+// ─── Griffiths → Zangwill Bridge Callout ────────────────────────────────────
+//
+// Custom styling for .callout-tip blocks used as "Griffiths → Zangwill Bridge"
+// explanations. Amber/gold color scheme.
+
+.callout.callout-style-default.callout-tip {
+  border-left-color: $bridge-accent !important;
+
+  .callout-header {
+    background-color: #fdf3d0;
+    color: darken($bridge-accent, 10%);
+  }
+
+  .callout-body {
+    background-color: #fdfaf0;
+  }
+}
+
+// ─── Important Callout Boxes ─────────────────────────────────────────────────
+
+.callout.callout-style-default.callout-important {
+  border-left-color: #8e1c1c !important;
+
+  .callout-header {
+    background-color: #faeaea;
+    color: #8e1c1c;
+  }
+}
+
+// ─── Reading Guide Tables ────────────────────────────────────────────────────
+//
+// Tables immediately following an h2 "Reading Guide" header get special styling.
+
+h2#reading-guide + table,
+h2:has(+ table) {
+  margin-top: 0;
+}
+
+table {
+  font-size: 0.93rem;
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 1.5rem;
+
+  thead tr {
+    background-color: #e8f0f7;
+    border-bottom: 2px solid $primary;
+
+    th {
+      color: darken($primary, 10%);
+      font-weight: 600;
+      padding: 0.5rem 0.75rem;
+    }
+  }
+
+  tbody tr {
+    border-bottom: 1px solid #dee2e6;
+
+    &:hover {
+      background-color: #f4f8fb;
+    }
+
+    td {
+      padding: 0.4rem 0.75rem;
+      vertical-align: top;
+    }
+  }
+}
+
+// ─── Equation Spacing ────────────────────────────────────────────────────────
+
+.math.display {
+  margin: 1.4rem 0;
+  overflow-x: auto;
+}
+
+// Equation labels (cross-reference numbers)
+.eq-label {
+  float: right;
+  color: #666;
+  font-size: 0.9em;
+}
+
+// ─── Chapter Navigation ──────────────────────────────────────────────────────
+
+// Make math interlude entries in the sidebar visually distinct
+.sidebar-section .sidebar-item {
+  a[href*="math-legendre"],
+  a[href*="math-spherical"] {
+    font-style: italic;
+    color: $math-accent;
+    padding-left: 0.5rem;
+    border-left: 2px solid lighten($math-accent, 30%);
+  }
+}
+
+// ─── Under Construction Notice ───────────────────────────────────────────────
+
+blockquote p:first-child:has(em) {
+  // Style the 🚧 construction notices
+}
+
+// Phase placeholder pages: subtle warning background on the intro note
+.callout-important .callout-header .callout-title::before {
+  content: "";
+}
+
+// ─── Code Blocks ─────────────────────────────────────────────────────────────
+
+pre.sourceCode {
+  font-size: 0.88rem;
+  border-radius: 4px;
+  border-left: 3px solid $primary;
+}
+
+// ─── TOC Styling ─────────────────────────────────────────────────────────────
+
+#TOC {
+  font-size: 0.9rem;
+
+  .toc-active {
+    color: $primary;
+    font-weight: 600;
+  }
+}
+
+// ─── Typography Refinements ──────────────────────────────────────────────────
+
+h1 {
+  color: $primary;
+  border-bottom: 2px solid lighten($primary, 50%);
+  padding-bottom: 0.3rem;
+  margin-bottom: 1.2rem;
+}
+
+h2 {
+  color: darken($primary, 5%);
+  margin-top: 2rem;
+}
+
+// Inline code in equations context
+code:not(.sourceCode) {
+  background-color: #f0f4f8;
+  border-radius: 3px;
+  padding: 0.15em 0.3em;
+  font-size: 0.9em;
+  color: darken($primary, 20%);
+}
+
+// ─── Responsive ──────────────────────────────────────────────────────────────
+
+@media (max-width: 768px) {
+  .math.display {
+    font-size: 0.9em;
+  }
+
+  table {
+    font-size: 0.85rem;
+  }
+}

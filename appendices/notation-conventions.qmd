@@ -1,0 +1,96 @@
+---
+title: "Notation and Conventions"
+---
+
+## Unit System
+
+This book uses **SI units** (Système International) throughout. This matches Griffiths' convention and is the standard in modern physics and engineering. Gaussian (CGS) units are still common in older literature and some branches of theoretical physics; we note key conversion factors where relevant.
+
+In SI:
+- Charge: Coulombs (C)
+- Electric field: V/m = N/C
+- Magnetic field: Tesla (T = kg/(A·s²))
+- Permittivity of free space: $\epsilon_0 = 8.854 \times 10^{-12}$ C²/(N·m²)
+- Permeability of free space: $\mu_0 = 4\pi \times 10^{-7}$ N/A²
+- Speed of light: $c = 1/\sqrt{\mu_0\epsilon_0} = 2.998 \times 10^8$ m/s
+
+## Vectors and Tensors
+
+- **Bold** for vectors: $\mathbf{E}$, $\mathbf{B}$, $\mathbf{r}$
+- **Hat** ($\hat{\ }$) for unit vectors: $\hat{r}$, $\hat{x}$, $\hat{n}$
+- **Double arrow** for rank-2 tensors: $\overleftrightarrow{T}$, $\overleftrightarrow{\sigma}$
+- Component notation: $E_i$ for the $i$-th component of $\mathbf{E}$
+- Einstein summation convention (Phase 4 onward): repeated indices summed, e.g., $A_i B_i \equiv \sum_i A_i B_i$
+
+## The Separation Vector (Griffiths Convention)
+
+Following Griffiths, we use **script r** ($\boldsymbol{\mathscr{r}}$) for the separation vector from source point to field point:
+
+$$
+\boldsymbol{\mathscr{r}} = \mathbf{r} - \mathbf{r}', \qquad \mathscr{r} = |\mathbf{r} - \mathbf{r}'|, \qquad \hat{\mathscr{r}} = \frac{\mathbf{r}-\mathbf{r}'}{|\mathbf{r}-\mathbf{r}'|}
+$$
+
+where $\mathbf{r}$ is the field point and $\mathbf{r}'$ is the source point. This notation keeps formulas compact and unambiguous.
+
+## Coordinate Systems
+
+| Coordinate | Symbol | Range |
+|------------|--------|-------|
+| Cartesian | $x, y, z$ | $(-\infty, \infty)$ |
+| Spherical radial | $r$ | $[0, \infty)$ |
+| Spherical polar | $\theta$ | $[0, \pi]$ |
+| Spherical azimuthal | $\phi$ | $[0, 2\pi)$ |
+| Cylindrical radial | $s$ | $[0, \infty)$ |
+| Cylindrical azimuthal | $\phi$ | $[0, 2\pi)$ |
+| Cylindrical axial | $z$ | $(-\infty, \infty)$ |
+
+Note: Griffiths uses $s$ for cylindrical radius to avoid confusion with spherical $r$.
+
+## Table of Key Symbols
+
+| Symbol | Meaning |
+|--------|---------|
+| $\mathbf{E}$ | Electric field (V/m) |
+| $\mathbf{B}$ | Magnetic field (T) |
+| $\mathbf{D}$ | Electric displacement (C/m²) |
+| $\mathbf{H}$ | Magnetic field intensity (A/m) |
+| $\mathbf{P}$ | Polarization, dipole moment per unit volume (C/m²) |
+| $\mathbf{M}$ | Magnetization, magnetic moment per unit volume (A/m) |
+| $\mathbf{A}$ | Magnetic vector potential (T·m = V·s/m) |
+| $V$ | Electric scalar potential (V) |
+| $\rho$ | Free volume charge density (C/m³) |
+| $\rho_b$ | Bound volume charge density (C/m³) |
+| $\sigma$ | Free surface charge density (C/m²) |
+| $\sigma_b$ | Bound surface charge density (C/m²) |
+| $\mathbf{J}$ | Free volume current density (A/m²) |
+| $\mathbf{J}_b$ | Bound volume current density (A/m²) |
+| $\mathbf{K}$ | Free surface current density (A/m) |
+| $\mathbf{K}_b$ | Bound surface current density (A/m) |
+| $\mathbf{p}$ | Electric dipole moment (C·m) |
+| $\mathbf{m}$ | Magnetic dipole moment (A·m²) |
+| $\mathbf{S}$ | Poynting vector (W/m²) |
+| $u$ | Electromagnetic energy density (J/m³) |
+| $\epsilon_0$ | Permittivity of free space |
+| $\mu_0$ | Permeability of free space |
+| $\epsilon_r$ | Relative permittivity (dielectric constant) |
+| $\mu_r$ | Relative permeability |
+| $\chi_e$ | Electric susceptibility ($\epsilon_r = 1 + \chi_e$) |
+| $\chi_m$ | Magnetic susceptibility ($\mu_r = 1 + \chi_m$) |
+
+## Fourier Transform Convention (Phase 5 onward)
+
+We use the physics convention:
+
+$$
+\tilde{f}(\omega) = \int_{-\infty}^{\infty} f(t)\, e^{i\omega t}\, dt, \qquad f(t) = \frac{1}{2\pi}\int_{-\infty}^{\infty}\tilde{f}(\omega)\, e^{-i\omega t}\, d\omega
+$$
+
+For spatial transforms: $\tilde{f}(\mathbf{k}) = \int f(\mathbf{r})\,e^{-i\mathbf{k}\cdot\mathbf{r}}\,d^3r$.
+
+## Spacetime Conventions (Phase 7 onward)
+
+- Metric signature: $(+,-,-,-)$ (Griffiths and Zangwill convention)
+- Greek indices: spacetime ($\mu, \nu = 0,1,2,3$); Latin indices: spatial ($i,j,k = 1,2,3$)
+- Four-position: $x^\mu = (ct, x, y, z)$
+- Four-potential: $A^\mu = (V/c, \mathbf{A})$
+- Four-current: $j^\mu = (c\rho, \mathbf{J})$

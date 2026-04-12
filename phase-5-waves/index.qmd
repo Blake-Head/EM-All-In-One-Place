@@ -1,0 +1,54 @@
+---
+title: "Phase 5 — Electromagnetic Waves"
+---
+
+> 🚧 **Under Construction** — This phase is outlined and will be developed in full. The structure and reading map below guide independent study in the meantime.
+
+## Overview
+
+One of the triumphs of Maxwell's equations was the prediction of electromagnetic waves. In a source-free region, the $\mathbf{E}$ and $\mathbf{B}$ fields satisfy wave equations with propagation speed $c = 1/\sqrt{\mu_0\epsilon_0}$ — exactly the speed of light. Maxwell immediately recognized that light *is* an electromagnetic wave.
+
+Phase 5 goes from the basic wave solution all the way to the sophisticated treatment of wave propagation in real media, including the beautiful physics of dispersion (why different colors travel at different speeds in glass).
+
+::: {.callout-note}
+## Math Prerequisites
+
+- **Boas Ch. 7** (Fourier series and transforms): needed for understanding wave packets, dispersion, and the spectral decomposition of pulses.
+- **Boas Ch. 14** (complex analysis): needed for the Kramers-Kronig relations and contour integration techniques used in dispersion theory.
+:::
+
+## Topics
+
+- **Waves in vacuum**: plane wave solutions; polarization; energy and momentum transport; radiation pressure
+- **Waves in linear media**: index of refraction; dispersion relation $k = n\omega/c$; skin depth in conductors
+- **Reflection and transmission**: Fresnel equations for $s$- and $p$-polarizations; Brewster's angle; total internal reflection
+- **Dispersion**: phase velocity vs. group velocity; the dispersion relation in a medium; anomalous dispersion near resonance
+- **The Kramers-Kronig relations**: causality implies that the real and imaginary parts of $\tilde{n}(\omega)$ are Hilbert transforms of each other
+- **Waves in conductors**: complex conductivity; the skin effect; plasma frequency; waves in plasmas
+- **Waveguides**: modes in rectangular and cylindrical waveguides; TE and TM modes; cutoff frequency; attenuation
+
+## Reading Map
+
+| Topic | Griffiths | Zangwill | Boas |
+|-------|-----------|----------|------|
+| Waves in vacuum | Ch. 9 §1–2 | Ch. 16 §1–3 | — |
+| Waves in media | Ch. 9 §3 | Ch. 16 §4–6 | — |
+| Reflection and transmission | Ch. 9 §3 | Ch. 17 §1–4 | — |
+| Dispersion | — | Ch. 17 §5–9 | Ch. 7 |
+| Kramers-Kronig | — | Ch. 17 §10–11 | Ch. 14 |
+| Waveguides | Ch. 9 §5 | Ch. 19 | — |
+
+## Key Equations
+
+$$
+\frac{\partial^2\mathbf{E}}{\partial t^2} = c^2\nabla^2\mathbf{E}, \qquad c = \frac{1}{\sqrt{\mu_0\epsilon_0}}
+$$
+
+$$
+n(\omega) = \frac{c k(\omega)}{\omega} = \sqrt{\epsilon_r(\omega)\mu_r(\omega)}
+$$
+
+Kramers-Kronig:
+$$
+\text{Re}[\tilde{n}(\omega)] - 1 = \frac{1}{\pi}\mathcal{P}\int_{-\infty}^{\infty}\frac{\text{Im}[\tilde{n}(\omega')]}{\omega'-\omega}\,d\omega'
+$$

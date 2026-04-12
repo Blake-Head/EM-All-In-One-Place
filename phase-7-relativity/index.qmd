@@ -1,0 +1,47 @@
+---
+title: "Phase 7 — Relativity & Electrodynamics"
+---
+
+> 🚧 **Under Construction** — This phase is outlined and will be developed in full. The structure and reading map below guide independent study in the meantime.
+
+## Overview
+
+Here's a remarkable fact: Maxwell's equations are *already* fully consistent with special relativity. They don't need to be modified — when Einstein discovered special relativity, he found that Newtonian mechanics (not electrodynamics) was the theory that needed fixing.
+
+The covariant formulation of E&M, using four-vectors and the electromagnetic field tensor, reveals the deep unity of the electric and magnetic fields: they are not independent entities but two aspects of a single antisymmetric rank-2 tensor. What looks like a pure electric field in one inertial frame looks like a mixture of electric and magnetic fields in another.
+
+::: {.callout-note}
+## Math Prerequisite
+
+Review **Boas Ch. 10** on four-vectors and Lorentz transformations. You need to be comfortable with the metric tensor $\eta_{\mu\nu}$, index raising and lowering, and the summation convention for spacetime indices.
+:::
+
+## Topics
+
+- **Special relativity review**: Lorentz transformations; time dilation, length contraction; relativistic kinematics; four-vectors $x^\mu$, $p^\mu$, $j^\mu$
+- **The field tensor**: $F^{\mu\nu}$ contains all six components of $\mathbf{E}$ and $\mathbf{B}$; Lorentz transformation of the EM fields
+- **Covariant Maxwell's equations**: $\partial_\nu F^{\mu\nu} = \mu_0 j^\mu$ and $\partial_{[\lambda}F_{\mu\nu]} = 0$; elegant and complete
+- **Electromagnetic four-potential**: $A^\mu = (V/c, \mathbf{A})$; gauge invariance in covariant form
+- **The stress-energy tensor** $T^{\mu\nu}$: energy density, Poynting vector, and Maxwell stress tensor packaged together; conservation law $\partial_\mu T^{\mu\nu} = -F^{\nu\mu}j_\mu$
+- **Relativistic particle dynamics**: covariant Lorentz force; motion in uniform fields; Thomas precession
+
+## Reading Map
+
+| Topic | Griffiths | Zangwill | Boas |
+|-------|-----------|----------|------|
+| Special relativity review | Ch. 12 §1–2 | Ch. 22 §1–2 | Ch. 10 |
+| Relativistic mechanics | Ch. 12 §2 | Ch. 22 §3 | — |
+| Field tensor, covariant Maxwell | Ch. 12 §3 | Ch. 22 §4–6 | — |
+| Stress-energy tensor | Ch. 12 §3 | Ch. 22 §7–8 | — |
+
+## Key Equations
+
+The electromagnetic field tensor:
+$$
+F^{\mu\nu} = \begin{pmatrix} 0 & -E_x/c & -E_y/c & -E_z/c \\ E_x/c & 0 & -B_z & B_y \\ E_y/c & B_z & 0 & -B_x \\ E_z/c & -B_y & B_x & 0 \end{pmatrix}
+$$
+
+Covariant Maxwell's equations:
+$$
+\partial_\nu F^{\mu\nu} = \mu_0 j^\mu, \qquad \partial_\lambda F_{\mu\nu} + \partial_\mu F_{\nu\lambda} + \partial_\nu F_{\lambda\mu} = 0
+$$

@@ -1,0 +1,70 @@
+---
+title: "Preface"
+---
+
+# E&M: All In One Place
+
+## What This Book Is
+
+This is a living, integrated study guide for classical electrodynamics. The premise is simple: take three great books — Griffiths' *Introduction to Electrodynamics*, Zangwill's *Modern Electrodynamics*, and Boas' *Mathematical Methods in the Physical Sciences* — rip out the pages, and restaple them into one cohesive reading path.
+
+No single book does everything well. Griffiths is the gold standard for building physical intuition and getting your hands dirty with concrete calculations. Zangwill is deeper, more modern, and shows you the elegant mathematical structure hiding just beneath the surface. Boas makes sure you have the mathematical tools you need, placed exactly where you need them. Together, they form something better than any one of them alone.
+
+## The Three-Spine Approach
+
+Think of this book as having three interwoven spines:
+
+**Griffiths — The Intuition Builder.** Griffiths writes like a brilliant professor who genuinely wants you to understand the physics. He builds up ideas from simple cases, uses clear geometric reasoning, and never loses sight of what the equations *mean*. If you want to know why the electric field of a dipole falls off as $r^{-3}$, Griffiths will show you with a picture and a calculation that you can follow line by line.
+
+**Zangwill — The Depth Layer.** Zangwill assumes you already have the Griffiths-level intuition and asks: now let's see the deeper structure. Green functions aren't just a trick — they're the systematic solution engine for all linear boundary value problems. The multipole expansion isn't just a convenient approximation — it's a decomposition into irreducible representations of the rotation group. Zangwill shows you that E&M is one of the most mathematically beautiful theories in all of physics.
+
+**Boas — The Math Toolkit.** Mathematical tools are introduced *right before* you need them, not front-loaded into a separate course that you've half-forgotten by the time the physics arrives. When we need Legendre polynomials, we stop and learn Legendre polynomials. When we need Fourier transforms for wave propagation, we introduce them in that context. Boas is the reliable reference that makes this just-in-time approach work.
+
+## How to Use This Book
+
+**Read linearly.** The phases are designed to be read in order, with each phase building on the previous. The math interludes (marked with a distinctive style) are placed where their content first becomes essential.
+
+**The gradient → divergence → curl → integral theorems → curvilinear coords sequence in Phase 0 is not optional.** Even if you think you remember this material, work through it. The notation and geometric intuition from Phase 0 permeates everything that follows.
+
+**Use the cross-references.** When a section references a Griffiths chapter, that's your signal to read it (or re-read it). Same for Zangwill and Boas. This book is a guide and synthesis, not a replacement for sitting with the primary texts.
+
+**Engage with the problems.** This is a study guide, not a passive reading experience. The best way to use it is alongside worked problems from Griffiths and Zangwill. An AI study partner is genuinely useful here — not as an answer key, but as a Socratic interlocutor who can push back on your reasoning.
+
+## Overview of the Eight Phases
+
+**Phase 0 — Vector Calculus** lays the mathematical foundation. Gradient, divergence, curl, the integral theorems, curvilinear coordinates, and the Dirac delta function. The content here largely parallels Griffiths Ch. 1 and Boas Ch. 5–6, 10.
+
+**Phase 1 — Electrostatics** is where the physics begins in earnest. Coulomb's law, Gauss's law, electric potential, Poisson's and Laplace's equations, separation of variables, the multipole expansion, and Green functions. Griffiths Ch. 2–3 and Zangwill Ch. 3–4, 7–8, with Boas Ch. 12–13 for the special functions.
+
+**Phase 2 — Electrostatics in Matter** introduces dielectrics: polarization, bound charges, the displacement field, and the constitutive relations. Griffiths Ch. 4 and Zangwill Ch. 6.
+
+**Phase 3 — Magnetostatics** covers the magnetic field, Biot-Savart, Ampère's law, the vector potential, magnetic multipoles, and magnetic matter. Griffiths Ch. 5–6 and Zangwill Ch. 10–11.
+
+**Phase 4 — Electrodynamics** is the hinge of the whole program: Faraday's law, Maxwell's equations in their full glory, conservation laws, the Poynting vector, the Maxwell stress tensor, gauge invariance, and retarded potentials. Griffiths Ch. 7–8 and Zangwill Ch. 2, 5, 15. A tensor math interlude from Boas Ch. 10 is included.
+
+**Phase 5 — Electromagnetic Waves** — what Maxwell's equations predict about light. Waves in vacuum and media, reflection and transmission, dispersion, Kramers-Kronig, waveguides. Griffiths Ch. 9 and Zangwill Ch. 16–17, 19. Fourier methods and complex analysis from Boas Ch. 7, 14 are introduced here.
+
+**Phase 6 — Radiation** explores what accelerating charges do: retarded potentials, Liénard-Wiechert fields, dipole radiation, the Larmor formula, synchrotron radiation, Čerenkov radiation, and radiation reaction. Griffiths Ch. 10–11 and Zangwill Ch. 20–21, 23.
+
+**Phase 7 — Relativity and Electrodynamics** reveals that E&M is inherently relativistic. Four-vectors, the field tensor, covariant formulation of Maxwell's equations, the stress-energy tensor. Griffiths Ch. 12 and Zangwill Ch. 22.
+
+**Phase 8 — Advanced Topics** covers selected capstone material from Zangwill: scattering theory (Rayleigh, Mie, optical theorem), topological aspects of EM (Aharonov-Bohm), and quantum/thermal connections (Casimir effect, van der Waals, fluctuation-dissipation).
+
+## A Note on This Document
+
+This is a living document and a work in progress. Phase 0 and Phase 1 are the most developed; later phases contain structured outlines that will be fleshed out over time. If you find errors, gaps in reasoning, or places where the explanation could be clearer, please open an issue on [GitHub](https://github.com/Blake-Head/EM-All-In-One-Place).
+
+The goal is not encyclopedic completeness but *understanding*. Every derivation, every equation, every callout box exists to serve that goal. The physicist's dream: to see classical electrodynamics whole, from Coulomb's law to the covariant stress-energy tensor, as one unified, beautiful theory.
+
+Let's begin.
+
+---
+
+::: {.callout-note}
+## Textbooks Referenced Throughout
+
+- **Griffiths**: *Introduction to Electrodynamics*, 4th ed. (David J. Griffiths)
+- **Zangwill**: *Modern Electrodynamics* (Andrew Zangwill)
+- **Boas**: *Mathematical Methods in the Physical Sciences*, 3rd ed. (Mary L. Boas)
+- **Schey**: *Div, Grad, Curl, and All That*, 4th ed. (H. M. Schey) — useful supplementary reading for Phase 0
+:::
