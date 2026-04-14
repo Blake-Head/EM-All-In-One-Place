@@ -262,3 +262,140 @@ code:not(.sourceCode) {
     font-size: 0.85rem;
   }
 }
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// ANIMATIONS & TRANSITIONS
+// Subtle, professional motion for an academic physics textbook.
+// All GPU-accelerated (transform/opacity) to avoid layout thrashing.
+// ═══════════════════════════════════════════════════════════════════════════════
+
+// ─── 1. Smooth Scroll ────────────────────────────────────────────────────────
+
+html {
+  scroll-behavior: smooth;
+}
+
+// ─── 2. Dark / Light Mode Toggle ─────────────────────────────────────────────
+// Smooth background/color transition when switching themes so the swap
+// doesn't feel jarring.
+
+body {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+// ─── 3. Page Content Fade-In ─────────────────────────────────────────────────
+// The main article area gently fades up on load.
+// Respects user's motion preferences for accessibility.
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .page-layout-article {
+    animation: fadeInUp 0.4s ease-in both;
+  }
+}
+
+// ─── 4. Sidebar Interactions ─────────────────────────────────────────────────
+
+// Chapter links: smooth color + indent on hover (transform avoids layout reflow)
+.sidebar-item-container .sidebar-item-text {
+  display: inline-block;
+  transition: color 0.2s ease, transform 0.2s ease;
+
+  &:hover {
+    transform: translateX(0.3rem);
+  }
+}
+
+// Phase/part section headers: subtle opacity shift on hover
+.sidebar-item-section .sidebar-item-text {
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+// Sidebar section expand/collapse: smooth height reveal
+.sidebar-item-section > .sidebar-items {
+  transition: opacity 0.2s ease;
+}
+
+// ─── 5. Callout Box Hover Lift ────────────────────────────────────────────────
+// A gentle upward nudge + soft shadow makes callouts feel interactive.
+// The box-shadow applies to all users; the transform respects reduced-motion.
+
+.callout {
+  transition: box-shadow 0.2s ease;
+
+  &:hover {
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .callout {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+    }
+  }
+}
+
+// ─── 6. Table Row Hover Transition ───────────────────────────────────────────
+// Enhances the existing hover state with a smooth background-color fade.
+
+table tbody tr {
+  transition: background-color 0.15s ease;
+}
+
+// ─── 7. Smooth Link Transitions ──────────────────────────────────────────────
+// All content-area links fade their color on hover.
+
+.page-layout-article a:not(.sidebar-item-text):not(.nav-link):not(.toc-link) {
+  transition: color 0.2s ease;
+}
+
+// ─── 8. Code Block Hover Effect ──────────────────────────────────────────────
+// A soft glow appears when the reader hovers over a code block.
+
+pre.sourceCode {
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+
+  &:hover {
+    box-shadow: 0 2px 10px rgba(44, 95, 138, 0.15);
+    border-color: lighten($primary, 15%);
+  }
+}
+
+// ─── 9. TOC Item Transitions ─────────────────────────────────────────────────
+// Active-state color change animates smoothly as you scroll.
+
+#TOC a {
+  transition: color 0.2s ease;
+}
+
+// ─── 10. Math Display Fade-In ─────────────────────────────────────────────────
+// Block equations softly appear rather than popping in with MathJax rendering.
+// Respects user's motion preferences for accessibility.
+
+@keyframes mathFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .math.display {
+    animation: mathFadeIn 0.5s ease-in both;
+  }
+}
