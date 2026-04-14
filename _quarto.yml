@@ -17,13 +17,13 @@ book:
 
   chapters:
     - index.qmd
-    - part: "Phase 0 — Vector Calculus"
+    - part: "0 — Vector Calculus"
       chapters:
         - phase-0-vector-calculus/01-gradient-divergence-curl.qmd
         - phase-0-vector-calculus/02-integral-theorems.qmd
         - phase-0-vector-calculus/03-curvilinear-coordinates.qmd
         - phase-0-vector-calculus/04-dirac-delta.qmd
-    - part: "Phase 1 — Electrostatics"
+    - part: "1 — Electrostatics"
       chapters:
         - phase-1-electrostatics/01-coulomb-gauss.qmd
         - phase-1-electrostatics/02-electric-potential.qmd
@@ -32,25 +32,25 @@ book:
         - phase-1-electrostatics/05-greens-functions.qmd
         - phase-1-electrostatics/math-legendre-polynomials.qmd
         - phase-1-electrostatics/math-spherical-harmonics.qmd
-    - part: "Phase 2 — Dielectrics"
+    - part: "2 — Dielectrics"
       chapters:
         - phase-2-dielectrics/index.qmd
-    - part: "Phase 3 — Magnetostatics"
+    - part: "3 — Magnetostatics"
       chapters:
         - phase-3-magnetostatics/index.qmd
-    - part: "Phase 4 — Electrodynamics"
+    - part: "4 — Electrodynamics"
       chapters:
         - phase-4-electrodynamics/index.qmd
-    - part: "Phase 5 — Electromagnetic Waves"
+    - part: "5 — Electromagnetic Waves"
       chapters:
         - phase-5-waves/index.qmd
-    - part: "Phase 6 — Radiation"
+    - part: "6 — Radiation"
       chapters:
         - phase-6-radiation/index.qmd
-    - part: "Phase 7 — Relativity & Electrodynamics"
+    - part: "7 — Relativity & Electrodynamics"
       chapters:
         - phase-7-relativity/index.qmd
-    - part: "Phase 8 — Advanced Topics"
+    - part: "8 — Advanced Topics"
       chapters:
         - phase-8-advanced/index.qmd
     - part: "Appendices"
